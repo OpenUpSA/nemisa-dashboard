@@ -65,13 +65,6 @@ export class CustomBubbleChart extends BaseMixin {
             node.radius = node.group.all()[1].value
         })
 
-        // const activeFilters = this._nodes.filter(node => Boolean(node.selected))
-        // const noActiveFilters = activeFilters.length == 0
-        // if (noActiveFilters)
-        //     this._nodes.forEach(node => {
-        //         node.selected = true;
-        //     }) 
-
         return this._nodes;
     }
 
@@ -103,13 +96,11 @@ export class CustomBubbleChart extends BaseMixin {
                 .on("mouseout", function(ev, d) {
                     self._tip.hide(d, this);
                 })
-                .style("stroke", "#8E8E8E")
 
         this._elements
             .on("click", function(ev, d) {
                 self.clickCircle(this, d);
             })
-            .style('cursor', 'pointer')
 
         this._text = this._elements
             .append('text')
@@ -118,10 +109,6 @@ export class CustomBubbleChart extends BaseMixin {
                     return d.count
                 return "";
             })
-            .style('fill', 'white')
-            .style('font-size', '10px')
-            .style('text-anchor', "middle")
-            .style('dominant-baseline', 'middle')
 
         this.redraw();
     }
