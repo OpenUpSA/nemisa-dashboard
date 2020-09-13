@@ -3,7 +3,7 @@ import {d3} from './d3';
 import {BaseMixin} from 'dc';
 
 export class CustomBubbleChart extends BaseMixin {
-    constructor(parent, group) {
+    constructor(parent, dataFilter, group) {
         super();
 
         this._groupAll = null;
@@ -15,6 +15,7 @@ export class CustomBubbleChart extends BaseMixin {
         this._circles = null;
         this._nodes = null;
         this._minRadiusLabel = 20;
+        this._total = dataFilter.total();
 
         dc.registerChart(this, group);
     }
@@ -118,7 +119,7 @@ export class CustomBubbleChart extends BaseMixin {
         const maxCount = d3.max(this._nodes.map(el => el.count))
         const maxIndex = d3.maxIndex(this._nodes, el => el.count);
         const radiusScale = d3.scaleSqrt()
-            .domain([minCount, maxCount])
+            .domain([0, this._total])
             .range([this._minRadius, this._maxRadius])
 
         return radiusScale;
