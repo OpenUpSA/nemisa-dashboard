@@ -13,7 +13,7 @@ export class AgeChart {
     }
 
     prepareWidget(container) {
-        this.chart = new dc.BarChart(container)
+        this.chart = new dc.BarChart(container).elasticY(true)
 
         this.chart
           .dimension(this.dimension)
