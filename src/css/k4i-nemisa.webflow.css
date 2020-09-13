@@ -630,10 +630,24 @@ a {
 
 .summary-grid .circle.selected circle {
   fill: #9D1E14;
+  cursor: pointer;
 }
 
-.summary-grid circle.largest {
+.summary-grid .circle text {
+  fill: white;
+  font-size: 10px;
+  text-anchor: middle;
+  dominant-baseline: middle;
+  cursor: pointer;
+}
+
+.summary-grid .largest {
   fill: #F2B997;
+}
+
+.summary-grid circle {
+  stroke: #8E8E8E;
+  cursor: pointer;
 }
 
 .summary-grid circle.largest:hover, .summary-grid .selected circle.largest {
