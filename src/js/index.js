@@ -9,7 +9,6 @@ import {WidgetContainer} from './widgets';
 import {FilteredCount} from './filtered_count';
 import {skillsExternalTraining} from './strings';
 import {ScreenElements} from './screen_elements';
-import {BubbleChart} from './bubble_chart';
 import {CustomBubbleChart} from './custom_bubble_chart';
 import {Filter} from './filter';
 import {GenderPie} from './gender';
