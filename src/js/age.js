@@ -18,6 +18,8 @@ export class AgeChart {
         this.chart
           .dimension(this.dimension)
           .group(this.group)
+          .xAxisLabel("Age")
+          .yAxisLabel("Number of responses")
           .x(d3.scaleLinear().domain([0, 70]))
     }
 
