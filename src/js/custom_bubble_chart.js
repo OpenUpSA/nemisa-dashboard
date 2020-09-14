@@ -38,9 +38,11 @@ export class CustomBubbleChart extends BaseMixin {
         if (data.selected) {
             data.dimension.filterAll();
             d3.select(el).classed("selected", false);
+            d3.select(el).classed("deselected", true);
         }
         else {
             data.dimension.filterExact(1);
+            d3.select(el).classed("deselected", false);
             d3.select(el).classed("selected", true);
         }
         data.selected = !data.selected;
@@ -67,6 +69,28 @@ export class CustomBubbleChart extends BaseMixin {
         })
 
         return this._nodes;
+    }
+
+    setDefaultState() {
+        let counter = 0;
+
+
+        this._elements.each(function(d) {
+            if (d.selected) {
+                d3.select(this).classed("selected", true)
+                d3.select(this).classed("deselected", false)
+                counter++;
+            }
+            else {
+                d3.select(this).classed("selected", false)
+                d3.select(this).classed("deselected", true)
+            }
+        })
+
+        if (counter == 0) {
+            this._elements.classed("selected", false)
+            this._elements.classed("deselected", false)
+        }
     }
 
     render() {
@@ -137,6 +161,7 @@ export class CustomBubbleChart extends BaseMixin {
         const maxNode = this._nodes[maxIndex];
         const radiusScale = this.getRadiusScale();
 
+
         this._circles.each(function(d) {
             if (d == maxNode)
                 d3.select(this).classed("largest", true)
@@ -145,12 +170,7 @@ export class CustomBubbleChart extends BaseMixin {
 
         })
 
-        this._elements.each(function(d) {
-            if (d.selected)
-                d3.select(this).classed("selected", true)
-            else
-                d3.select(this).classed("selected", false)
-        })
+        this.setDefaultState();
 
         this.setLargestText(maxNode.label);
 

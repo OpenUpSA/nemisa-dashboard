@@ -29,17 +29,30 @@ export class GenderPie extends dc.PieChart {
     }
 
     _drawChart() {
+        const self = this;
+        this._tip = d3.tip().attr('class', 'tooltip tooltip2').html(function(d) { return "yo yo yo"; console.log(d);return `${d.count}<br>${d.label}`});
+        d3.select(this.container).call(this._tip);
+
         super._drawChart()
 
-        this._g.each(function(d) {
-            if (d != undefined) {
-                const majorityAngle = Math.PI;
-                if (d.endAngle - d.startAngle >= majorityAngle)
-                    d3.select('path').classed('largest', true)
-                else
-                    d3.select('path').classed('largest', false)
-
-            }
-        })
+        this._g.select(`g.${this._sliceGroupCssClass}`)
+                .selectAll(`g.${this._sliceCssClass}`)
+                .each(function(d) {
+                    if (d != undefined) {
+                        const majorityAngle = Math.PI;
+                        if (d.endAngle - d.startAngle >= majorityAngle)
+                            d3.select(this).classed('largest', true)
+                        else
+                            d3.select(this).classed('largest', false)
+                    }
+                })
+                .on("mouseover", function(ev, d) {
+                    const path = d3.select(this).select('path').node();
+                    self._tip.show(d, path);
+                })
+                .on("mouseout", function(ev, d) {
+                    const path = d3.select(this).select('path').node();
+                    self._tip.hide(d, path);
+                })
     }
 }

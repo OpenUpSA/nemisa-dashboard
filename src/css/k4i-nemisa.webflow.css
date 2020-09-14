@@ -618,21 +618,41 @@ a {
 }
 
 .demographics__grid .block:nth-child(3) .dc-chart rect.deselected {
-  fill: #CFCFCF
+  fill: #CFCFCF;
 }
 
-.summary-grid circle {
+/* pie chart */
+.demographics__grid .block:nth-child(4) .pie-slice-group path {
+  fill: #CFCFCF;
+  stroke: white;
+  stroke-width: 2px;
+}
+
+.demographics__grid .block:nth-child(4) .pie-slice-group .largest path {
+  fill: #EE7B40;
+}
+
+.demographics__grid .block:nth-child(4) .pie-label-group text {
+  fill: white;
+}
+
+.demographics__grid .block:nth-child(4) .deselected path {
   fill: #CCCCCC;
 }
-.summary-grid circle:hover {
-  fill: #9F9F9F;
-}
 
-.summary-grid .circle.selected circle {
+.demographics__grid .block:nth-child(4) .selected path {
   fill: #9D1E14;
-  cursor: pointer;
 }
 
+.demographics__grid .block:nth-child(4) .selected.largest path {
+  fill: #9D1E14;
+}
+
+.demographics__grid .block:nth-child(4) .deselected.largest path {
+  fill: #F2B997;
+}
+
+/* circle widgets */
 .summary-grid .circle text {
   fill: white;
   font-size: 10px;
@@ -641,8 +661,26 @@ a {
   cursor: pointer;
 }
 
+
+/* regular circles */
+.summary-grid circle {
+  fill: #9F9F9F;
+}
+
+.summary-grid circle:hover {
+  fill: #6F6F6F;
+}
+
+.summary-grid .circle.selected circle {
+  fill: #9D1E14;
+}
+
+.summary-grid .circle.deselected circle {
+  fill: #CCCCCC;
+}
+
 .summary-grid .largest {
-  fill: #F2B997;
+  fill: #EE7B40;
 }
 
 .summary-grid circle {
