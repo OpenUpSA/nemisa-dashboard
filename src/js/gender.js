@@ -9,19 +9,15 @@ export class GenderPie extends dc.PieChart {
         this.grpGender = this.dimGender.group().reduceCount();
         this.chart = null;
 
-        this.prepareWidget(container);
         this.prepareDOM();
 
         this.dimension(this.dimGender).group(this.grpGender);
-    }
+        this.label(function(d) {
+            const perc = d.value / dataFilter.total() 
+            const sPerc = d3.format('.0%')(perc)
 
-    prepareWidget(container) {
-        return
-        this.chart = new dc.PieChart(container)
-
-        this.chart
-          .dimension(this.dimGender)
-          .group(this.grpGender)
+            return `${d.key}: ${sPerc}`;
+        })
     }
 
     prepareDOM() {
@@ -30,8 +26,6 @@ export class GenderPie extends dc.PieChart {
 
     _drawChart() {
         const self = this;
-        this._tip = d3.tip().attr('class', 'tooltip tooltip2').html(function(d) { return "yo yo yo"; console.log(d);return `${d.count}<br>${d.label}`});
-        d3.select(this.container).call(this._tip);
 
         super._drawChart()
 
@@ -45,14 +39,6 @@ export class GenderPie extends dc.PieChart {
                         else
                             d3.select(this).classed('largest', false)
                     }
-                })
-                .on("mouseover", function(ev, d) {
-                    const path = d3.select(this).select('path').node();
-                    self._tip.show(d, path);
-                })
-                .on("mouseout", function(ev, d) {
-                    const path = d3.select(this).select('path').node();
-                    self._tip.hide(d, path);
                 })
     }
 }

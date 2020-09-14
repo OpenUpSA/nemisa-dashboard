@@ -7,6 +7,7 @@ import {
     forceCollide, forceX, forceY
 } from 'd3-force';
 import {max, min, maxIndex, minIndex} from 'd3-array';
+import {format} from 'd3-format';
 import tip from 'd3-tip';
 
 export const d3 = {
@@ -16,6 +17,7 @@ export const d3 = {
     csv,
     forceSimulation, forceCenter, forceManyBody, forceCollide, forceX, forceY,
     max, min, maxIndex, minIndex,
+    format,
     tip
 }
 
