@@ -9,7 +9,7 @@ export class CustomBubbleChart extends BaseMixin {
         this._groupAll = null;
         this._colors = null;
         this._width = this._height = 200;
-        this._minRadius = 5, this._maxRadius = 30;
+        this._minRadius = 5, this._maxRadius = 20;
         this._duration = 50;
         this._root = d3.select(parent);
         this._circles = null;
@@ -143,7 +143,8 @@ export class CustomBubbleChart extends BaseMixin {
         const maxCount = d3.max(this._nodes.map(el => el.count))
         const maxIndex = d3.maxIndex(this._nodes, el => el.count);
         const radiusScale = d3.scaleSqrt()
-            .domain([0, this._total])
+            .domain([minCount, maxCount])
+            // .domain([0, this._total])
             .range([this._minRadius, this._maxRadius])
 
         return radiusScale;
@@ -159,7 +160,7 @@ export class CustomBubbleChart extends BaseMixin {
 
         const maxIndex = d3.maxIndex(this._nodes, el => el.count);
         const maxNode = this._nodes[maxIndex];
-        const radiusScale = this.getRadiusScale();
+        this._radiusScale = this.getRadiusScale();
 
 
         this._circles.each(function(d) {
@@ -175,18 +176,22 @@ export class CustomBubbleChart extends BaseMixin {
         this.setLargestText(maxNode.label);
 
         this._text.text(function(d){
-            const radius = radiusScale(d.count);
+            const radius = self._radiusScale(d.count);
             if (radius >= self._minRadiusLabel)
                 return d.count
             return "";
         })
 
-        const simulation = d3.forceSimulation(self._nodes)
+        if (this._simulation)
+            this._simulation.stop();
+
+        this._simulation = d3
+            .forceSimulation(self._nodes)
+            .force('charge', d3.forceManyBody().strength(2))
             .force('x', d3.forceX(this._width / 2))
             .force('y', d3.forceY(this._height / 2))
-            .force('charge', d3.forceManyBody().strength(2))
             .force("collide", d3.forceCollide().radius(d => {
-                return radiusScale(d.count) * 1.1
+                return self._radiusScale(d.count) * 1.1
             }))
             .on('tick', () => {
                 this._elements.transition()
@@ -195,7 +200,7 @@ export class CustomBubbleChart extends BaseMixin {
                         return `translate(${d.x}, ${d.y})`
                     })
                     .select("circle")
-                        .attr("r", d => radiusScale(d.count))
+                        .attr("r", d => self._radiusScale(d.count))
             })
     }
 }
