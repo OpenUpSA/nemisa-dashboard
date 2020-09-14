@@ -692,6 +692,10 @@ a {
   fill: #EE7B40;
 }
 
+.summary-grid .deselected circle.largest {
+  fill: #F2B997;
+}
+
 .page-nav__link:hover {
   background-color: rgba(0, 0, 0, 0.06);
   color: #000;
