@@ -12,7 +12,8 @@ class TextBox {
     }
 
     getResult() {
-        return d3.select(this.container).select('.text-field').value;
+        const el = d3.select(this.container).select('.text-field');
+        return el.nodes()[0].value;
     }
 }
 

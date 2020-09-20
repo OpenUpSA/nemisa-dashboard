@@ -20,20 +20,20 @@ class Form {
         this.addButton();
     }
 
-    getResults() {
+    addButton() {
+        const self = this;
+        d3.select('.survey__wrap').append('button').text('Submit form').on('click', function() {
+            console.log(self.getResult());
+        })
+    }
+
+    getResult() {
         const result = {}
         this.formSections.forEach(el => {
             result[el.label] = el.section.getResult()
         })
 
         return result;
-
-    }
-
-    addButton() {
-        d3.select('.survey__wrap').append('button').text('Submit form').on('click', function() {
-            alert("saved")
-        })
     }
 
     createWidgetFactories() {

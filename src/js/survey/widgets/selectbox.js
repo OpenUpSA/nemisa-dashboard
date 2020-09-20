@@ -21,7 +21,7 @@ class SelectBox {
 
         selectBox.on('change', function(ev, d) {
             const idx =ev.target.options.selectedIndex;
-            this.currentValue = options[idx - 1];
+            self.currentValue = options[idx - 1];
         })
 
         selectBox.selectAll('option')
@@ -39,7 +39,9 @@ class SelectBox {
     }
 
     getResult() {
-        return this.currentValue
+        if (this.currentValue)
+            return this.currentValue.key;
+        return null;
     }
 }
 
@@ -50,13 +52,13 @@ export class SelectWidgetFactory extends WidgetFactory {
 
     newElement(title, options) {
         const element = super.newElement();
+        d3.select(element).select('.field-label').text(title);
         return new SelectBox(element, options)
         // const selectBox = d3.select(element).select('select');
         // const elOptions = selectBox.selectAll('option');
         // const tmplOption = elOptions.nodes()[0].cloneNode(true);
         // elOptions.remove();
 
-        // d3.select(element).select('.field-label').text(title);
 
         // options.forEach(el => {
         //     const newOption = tmplOption.cloneNode(true);
