@@ -2,25 +2,28 @@ import {d3} from '../../d3';
 import {WidgetFactory} from './widget_base';
 
 class RadioRow {
-    constructor(template, title, count) {
+    constructor(template, title, options) {
         this.template = template;
         this.container = template.cloneNode(true);
-        this.draw(this.container, title, count)
+        this.draw(this.container, title, options)
+        this.key = title.key
+        this.options = options
+
         this.currentSelection = null;
+        this.currentValue = null;
     }
 
-    draw(container, title, count) {
-        d3.select(container).select('.survey-grid-row__label').text(title)
-        this.drawRadios(container, count);
+    draw(container, title, options) {
+        d3.select(container).select('.survey-grid-row__label').text(title.label)
+        this.drawRadios(container, options);
     }
 
-    drawRadios(container, count) {
+    drawRadios(container, options) {
         const self = this;
-        const data = [...new Array(count).keys()]
         const tmplRadio = this._getTemplateRadio(container);
 
         d3.select(container).selectAll('.survey-grid-row__radio')
-            .data(data)
+            .data(options)
             .enter()
             .append(function(d) {
                 return tmplRadio.cloneNode(true);
@@ -37,6 +40,7 @@ class RadioRow {
                     d3.select(container).selectAll(`.${clsSelected}`).classed(clsSelected, false);
                     d3.select(this).classed(clsSelected, true);
                     self.currentSelection = idx;
+                    self.currentValue = d;
                 })
     }
 
@@ -47,19 +51,27 @@ class RadioRow {
         return tmplRadio;
     }
 
+    getResult() {
+        return {
+            key: this.key, result: this.currentValue
+        }
+    }
+
 }
 
 class MultiRadioWidget {
-    constructor(container, options, rows) {
+    constructor(container, title, options, rows) {
         this.container = container;
         this.options = options;
         this.rows = rows || [];
+        this.title = title;
 
         this.draw();
     } 
 
     draw() {
         const header = d3.select(this.container).select('.survey-grid--head');
+        const richText = d3.select(this.container).select('.survey-description p').text(this.title)
         const labels = header.selectAll('.survey-grid-column__label')
         const tmplLabel = labels.nodes()[0].cloneNode(true);
         labels.remove();
@@ -86,6 +98,11 @@ class MultiRadioWidget {
         this.container.appendChild(row.container); 
         this.rows.push(row);
     }
+
+    getResult() {
+        const results = this.rows.map(row => row.getResult());
+        return results;
+    }
 }
 
 export class MultiRadioWidgetFactory extends WidgetFactory {
@@ -93,15 +110,15 @@ export class MultiRadioWidgetFactory extends WidgetFactory {
         super(template);
     }
 
-    newElement(rows, options) {
+    newElement(data, options) {
         const element = super.newElement();
         const elRows = d3.select(element).selectAll('.survey-grid--row');
         const tmplRow = elRows.nodes()[0].cloneNode(true);
         elRows.remove();
 
-        const multiRadioWidget = new MultiRadioWidget(element, options);
-        rows.forEach(rowData => {
-            const row = new RadioRow(tmplRow, rowData, options.length);
+        const multiRadioWidget = new MultiRadioWidget(element, data.title, data.options);
+        data.questions.forEach(question => {
+            const row = new RadioRow(tmplRow, question, data.options);
             multiRadioWidget.addRow(row);
         })
 
