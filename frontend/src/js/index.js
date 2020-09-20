@@ -4,7 +4,6 @@ import * as dc from 'dc';
 import crossfilter from 'crossfilter2';
 
 import {d3} from './d3';
-import data from '/data/data.json';
 import {WidgetContainer} from './widgets';
 import {FilteredCount} from './filtered_count';
 import {skillsExternalTraining} from './strings';

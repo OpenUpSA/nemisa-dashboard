@@ -1,7 +1,7 @@
 import {select, selectAll} from 'd3-selection';
 import {scaleLinear, scaleSqrt, scaleOrdinal, scaleSequential} from 'd3-scale';
 import {interpolateRdYlGn} from 'd3-scale-chromatic'
-import {csv} from 'd3-fetch';
+import {csv, json} from 'd3-fetch';
 import {
     forceSimulation, forceCenter, forceManyBody,
     forceCollide, forceX, forceY
@@ -14,7 +14,7 @@ export const d3 = {
     select, selectAll,
     scaleLinear, scaleSqrt, scaleOrdinal, scaleSequential,
     interpolateRdYlGn,
-    csv,
+    csv, json,
     forceSimulation, forceCenter, forceManyBody, forceCollide, forceX, forceY,
     max, min, maxIndex, minIndex,
     format,
