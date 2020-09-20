@@ -1,5 +1,5 @@
 import {d3} from '../d3';
-import {widget_factories} from './widgets/widget_factories'
+import {widget_factories} from './widgets/factories'
 import {sections} from './sections/sections'
 
 class Form {

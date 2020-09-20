@@ -1,6 +1,6 @@
-import {Section} from './section_base';
-import {SectionGeneral} from './section_general';
-import {SectionDigitalDeployment} from './section_deployment';
+import {Section} from './base';
+import {SectionGeneral} from './general';
+import {SectionDigitalDeployment} from './deployment';
 
 
 export const sections = {

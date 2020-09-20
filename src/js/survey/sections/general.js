@@ -1,5 +1,5 @@
 import {d3} from '../../d3';
-import {Section} from './section_base';
+import {Section} from './base';
 
 export class SectionGeneral extends Section {
     constructor(block, title, widgets) {

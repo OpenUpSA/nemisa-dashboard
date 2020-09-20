@@ -1,5 +1,5 @@
 import {d3} from '../../d3';
-import {WidgetFactory} from './widget_base';
+import {WidgetFactory} from './base';
 
 export class SelectWidgetFactory extends WidgetFactory {
     constructor(template) {
