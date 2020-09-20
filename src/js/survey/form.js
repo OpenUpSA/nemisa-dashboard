@@ -8,22 +8,54 @@ class Form {
     }
 
     prepareDOM() {
+        d3.select('.w-iframe').remove();
         this.elSurvey = d3.select('.survey__wrap').node();
         this.tmplSection = d3.select('.survey__wrap > .block').node().cloneNode(true);
         d3.select(this.tmplSection).selectAll(".survey-block").remove();
 
+        const widgets = this.createWidgetFactories()
+        d3.selectAll('.survey__wrap > .block').remove();
+
+        this.formSections = this.createFormSections(this.elSurvey, widgets);
+        this.addButton();
+    }
+
+    getResults() {
+        const result = {}
+        this.formSections.forEach(el => {
+            result[el.label] = el.section.getResult()
+        })
+
+        return result;
+
+    }
+
+    addButton() {
+        d3.select('.survey__wrap').append('button').text('Submit form').on('click', function() {
+            alert("saved")
+        })
+    }
+
+    createWidgetFactories() {
         const elements = d3.selectAll('.survey__wrap > .block .survey-block');
+        const widgetNodes = elements.nodes();
 
         const widgets = {
-            textbox: new widget_factories.textbox(elements.nodes()[0].cloneNode(true)),
-            select: new widget_factories.select(elements.nodes()[1].cloneNode(true)),
-            multiradio: new widget_factories.multiradio(elements.nodes()[2].cloneNode(true)),
-            checkboxes: new widget_factories.checkboxes(elements.nodes()[3].cloneNode(true)),
+            textbox: new widget_factories.textbox(widgetNodes[0].cloneNode(true)),
+            select: new widget_factories.select(widgetNodes[1].cloneNode(true)),
+            multiradio: new widget_factories.multiradio(widgetNodes[2].cloneNode(true)),
+            checkboxes: new widget_factories.checkboxes(widgetNodes[3].cloneNode(true)),
         }
 
+        elements.remove();
+
+        return widgets;
+    }
+
+    createFormSections(container, widgets) {
         const newSection = () => this.tmplSection.cloneNode(true);
 
-        const formSections = [
+        this.formSections = [
             {label: "general", section: new sections.general(newSection(), "General Information", widgets)},
             {label: "digitalDeployment", section: new sections.digital_deployment(newSection(), "Digital Technology Deployment", widgets)},
             {label: "digitalUsed", section: new sections.technology_used(newSection(), "Digital Technology Used", widgets)},
@@ -35,29 +67,12 @@ class Form {
             {label: "demographics", section: new sections.demographics(newSection(), "Demographics", widgets)}
         ]
 
-        elements.remove();
-        d3.selectAll('.survey__wrap > .block').remove();
-
-        formSections.forEach(section => {
-            this.elSurvey.appendChild(section.section.block);
+        this.formSections.forEach(section => {
+            container.appendChild(section.section.block);
         })
 
-        const result = {}
-        formSections.forEach(el => {
-            result[el.label] = el.section.getResult()
-        })
 
-        console.log(result);
-
-        // this.elSurvey.appendChild(sectionGeneral.block);
-        // this.elSurvey.appendChild(sectionDigitalDeployment.block);
-        // this.elSurvey.appendChild(sectionDigitalUsed.block);
-        // this.elSurvey.appendChild(sectionDigitalFuture.block);
-        // this.elSurvey.appendChild(sectionDigitalSkills.block);
-        // this.elSurvey.appendChild(sectionDigitalSupport.block);
-        // this.elSurvey.appendChild(sectionRisk.block);
-        // this.elSurvey.appendChild(sectionAttitude.block);
-        // this.elSurvey.appendChild(sectionDemographics.block);
+        return this.formSections;
 
     }
 }
@@ -65,4 +80,3 @@ class Form {
 
 
 const form = new Form();
-// Webflow.require('ix2').init()
