@@ -54,18 +54,5 @@ export class SelectWidgetFactory extends WidgetFactory {
         const element = super.newElement();
         d3.select(element).select('.field-label').text(title);
         return new SelectBox(element, options)
-        // const selectBox = d3.select(element).select('select');
-        // const elOptions = selectBox.selectAll('option');
-        // const tmplOption = elOptions.nodes()[0].cloneNode(true);
-        // elOptions.remove();
-
-
-        // options.forEach(el => {
-        //     const newOption = tmplOption.cloneNode(true);
-        //     d3.select(newOption).attr('value', el[0]).text(el[1]);
-        //     selectBox.nodes()[0].appendChild(newOption)
-        // })
-
-        // return element
     }
 }
