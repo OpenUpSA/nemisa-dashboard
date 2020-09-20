@@ -9,32 +9,32 @@ export class SectionDemographics extends Section {
 
     addWidgets() {
         const gender_options = [
-            ['_gender_female', 'Female'],
-            ['_gender_male', 'Male'],
-            ['_gender_na', 'Prefer not to say'],
+            {key: '_gender_female', label: 'Female'},
+            {key: '_gender_male', label: 'Male'},
+            {key: '_gender_na', label: 'Prefer not to say'},
         ]
 
         const edu_options = [
-            ['_edu_none', 'None'],
-            ['_edu_primary', 'Primary School'],
-            ['_edu_high', 'High School'],
-            ['_edu_diploma', 'Diploma'],
-            ['_edu_degree', 'Degree'],
-            ['_edu_postgrad', 'Postgraduate (Honors, Masters, Doctorate)'],
+            {key: '_edu_none', label: 'None'},
+            {key: '_edu_primary', label: 'Primary School'},
+            {key: '_edu_high', label: 'High School'},
+            {key: '_edu_diploma', label: 'Diploma'},
+            {key: '_edu_degree', label: 'Degree'},
+            {key: '_edu_postgrad', label: 'Postgraduate (Honors, Masters, Doctorate)'},
         ]
 
         const race_options = [
-            ['_race_african', 'Black'],
-            ['_race_coloured', 'Coloured'],
-            ['_race_indian', 'Indian'],
-            ['_race_white', 'White'],
-            ['_race_na', 'Prefer not to say'],
+            {key: '_race_african', label: 'Black'},
+            {key: '_race_coloured', label: 'Coloured'},
+            {key: '_race_indian', label: 'Indian'},
+            {key: '_race_white', label: 'White'},
+            {key: '_race_na', label: 'Prefer not to say'},
         ]
 
-        this.appendChild(this.widgets.select.newElement('Gender', gender_options));
+        this.appendChild(this.widgets.select.newElement('Gender', gender_options).container);
         this.appendChild(this.widgets.textbox.newElement('Year of birth'));
-        this.appendChild(this.widgets.select.newElement('What is your highest education level?', edu_options));
-        this.appendChild(this.widgets.select.newElement('Which racial group do you belong to?', race_options));
+        this.appendChild(this.widgets.select.newElement('What is your highest education level?', edu_options).container);
+        this.appendChild(this.widgets.select.newElement('Which racial group do you belong to?', race_options).container);
         this.appendChild(this.widgets.textbox.newElement('Which city or town do you live in?'));
     }
 

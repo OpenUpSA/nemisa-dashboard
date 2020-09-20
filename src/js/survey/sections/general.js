@@ -9,21 +9,21 @@ export class SectionGeneral extends Section {
 
     addWidgets() {
         const options = [
-            ['_ind_ict', 'Communication and Information Technology'],
-            ['_ind_domestic', 'Domestic Work'],
-            ['_ind_education', 'Education'],
-            ['_ind_financial', 'Financial'],
-            ['_ind_manufacturing', 'Manufacturing'],
-            ['_ind_mining', 'Mining'],
-            ['_int_textiles', 'Textiles'],
-            ['_ind_sports', 'Sports & Events'],
-            ['_ind_tourism', 'Tourism'],
-            ['_ind_wholesale', 'Wholesale and Retail'],
-            ['_ind_charity', 'Non-profit and Charity'],
+            {key: '_ind_ict', label: 'Communication and Information Technology'},
+            {key: '_ind_domestic', label: 'Domestic Work'},
+            {key: '_ind_education', label: 'Education'},
+            {key: '_ind_financial', label: 'Financial'},
+            {key: '_ind_manufacturing', label: 'Manufacturing'},
+            {key: '_ind_mining', label: 'Mining'},
+            {key: '_int_textiles', label: 'Textiles'},
+            {key: '_ind_sports', label: 'Sports & Events'},
+            {key: '_ind_tourism', label: 'Tourism'},
+            {key: '_ind_wholesale', label: 'Wholesale and Retail'},
+            {key: '_ind_charity', label: 'Non-profit and Charity'},
         ]
 
         this.appendChild(this.widgets.textbox.newElement('Full Name'));
         this.appendChild(this.widgets.textbox.newElement('Email'));
-        this.appendChild(this.widgets.select.newElement('Industry', options));
+        this.appendChild(this.widgets.select.newElement('Industry', options).container);
     }
 }
