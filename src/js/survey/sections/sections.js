@@ -7,6 +7,7 @@ import {SectionSkillsSupply} from './skills_supply';
 import {SectionSkillsSupport} from './skills_support';
 import {SectionPerceivedRisk} from './risks';
 import {SectionAttitudes} from './attitudes';
+import {SectionDemographics} from './demographics';
 
 
 export const sections = {
@@ -19,4 +20,5 @@ export const sections = {
     skills_support: SectionSkillsSupport,
     perceived_risk: SectionPerceivedRisk,
     attitudes: SectionAttitudes,
+    demographics: SectionDemographics,
 }

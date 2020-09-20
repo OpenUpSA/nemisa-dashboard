@@ -9,9 +9,17 @@ export class SectionGeneral extends Section {
 
     addWidgets() {
         const options = [
-            ['_option1', 'option1'],
-            ['_option2', 'option2'],
-            ['_option3', 'option3'],
+            ['_ind_ict', 'Communication and Information Technology'],
+            ['_ind_domestic', 'Domestic Work'],
+            ['_ind_education', 'Education'],
+            ['_ind_financial', 'Financial'],
+            ['_ind_manufacturing', 'Manufacturing'],
+            ['_ind_mining', 'Mining'],
+            ['_int_textiles', 'Textiles'],
+            ['_ind_sports', 'Sports & Events'],
+            ['_ind_tourism', 'Tourism'],
+            ['_ind_wholesale', 'Wholesale and Retail'],
+            ['_ind_charity', 'Non-profit and Charity'],
         ]
 
         this.appendChild(this.widgets.textbox.newElement('Full Name'));

@@ -31,7 +31,7 @@ class Form {
         const sectionDigitalSupport = new sections.skills_support(newSection(), "Digital Skills Support", widgets);
         const sectionRisk = new sections.perceived_risk(newSection(), "Risks", widgets);
         const sectionAttitude = new sections.attitudes(newSection(), "Attitude", widgets);
-        const sectionDemographics = new sections.base(newSection(), "Demographics", widgets);
+        const sectionDemographics = new sections.demographics(newSection(), "Demographics", widgets);
 
         elements.remove();
         d3.selectAll('.survey__wrap > .block').remove();
