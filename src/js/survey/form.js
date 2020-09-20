@@ -25,12 +25,12 @@ class Form {
 
         const sectionGeneral = new sections.general(newSection(), "General Information", widgets);
         const sectionDigitalDeployment = new sections.digital_deployment(newSection(), "Digital Technology Deployment", widgets);
-        const sectionDigitalUsed = new sections.base(newSection(), "Digital Technology Used", widgets);
-        const sectionDigitalFuture = new sections.base(newSection(), "Future Digital Technologies Needed", widgets);
-        const sectionDigitalSkills = new sections.base(newSection(), "Digital Skills Supply", widgets);
-        const sectionDigitalSupport = new sections.base(newSection(), "Digital Skills Support", widgets);
-        const sectionRisk = new sections.base(newSection(), "Risks", widgets);
-        const sectionAttitude = new sections.base(newSection(), "Attitude", widgets);
+        const sectionDigitalUsed = new sections.technology_used(newSection(), "Digital Technology Used", widgets);
+        const sectionDigitalFuture = new sections.future_technologies(newSection(), "Future Digital Technologies Needed", widgets);
+        const sectionDigitalSkills = new sections.skills_supply(newSection(), "Digital Skills Supply", widgets);
+        const sectionDigitalSupport = new sections.skills_support(newSection(), "Digital Skills Support", widgets);
+        const sectionRisk = new sections.perceived_risk(newSection(), "Risks", widgets);
+        const sectionAttitude = new sections.attitudes(newSection(), "Attitude", widgets);
         const sectionDemographics = new sections.base(newSection(), "Demographics", widgets);
 
         elements.remove();
