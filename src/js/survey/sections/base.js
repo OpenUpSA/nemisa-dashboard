@@ -1,10 +1,10 @@
 import {d3} from '../../d3';
 
 export class Section {
-    constructor(block, title, widgets) {
+    constructor(block, title, widgetFactories) {
         this.block = block;
         this.title = title;
-        this.widgets = widgets;
+        this.widgetFactories = widgetFactories;
         this.prepareDOM();
     }
 

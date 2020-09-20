@@ -3,8 +3,8 @@ import {Section} from './base';
 import {perceivedRisk} from '../../strings';
 
 export class SectionPerceivedRisk extends Section {
-    constructor(block, title, widgets) {
-        super(block, title, widgets);
+    constructor(block, title, widgetFactories) {
+        super(block, title, widgetFactories);
         this.addWidgets();
     }
 
@@ -14,8 +14,12 @@ export class SectionPerceivedRisk extends Section {
             options: ['Strongly disagree', 'Disagree', 'Neutral', 'Agree', 'Strongly Agree'],
             title: 'Perceived risk associated with digital technology usage in the workplace.'
         }
-        this.multiradio = this.widgets.multiradio.newElement(data);
+        this.multiradio = this.widgetFactories.multiradio.newElement(data);
         this.appendChild(this.multiradio.container);
+    }
+
+    getResult() {
+        return {perceived_risks: this.multiradio.getResult()}
     }
 
 }

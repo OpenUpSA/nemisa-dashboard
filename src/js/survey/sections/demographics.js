@@ -2,8 +2,8 @@ import {d3} from '../../d3';
 import {Section} from './base';
 
 export class SectionDemographics extends Section {
-    constructor(block, title, widgets) {
-        super(block, title, widgets);
+    constructor(block, title, widgetFactories) {
+        super(block, title, widgetFactories);
         this.addWidgets();
     }
 
@@ -31,11 +31,26 @@ export class SectionDemographics extends Section {
             {key: '_race_na', label: 'Prefer not to say'},
         ]
 
-        this.appendChild(this.widgets.select.newElement('Gender', gender_options).container);
-        this.appendChild(this.widgets.textbox.newElement('Year of birth'));
-        this.appendChild(this.widgets.select.newElement('What is your highest education level?', edu_options).container);
-        this.appendChild(this.widgets.select.newElement('Which racial group do you belong to?', race_options).container);
-        this.appendChild(this.widgets.textbox.newElement('Which city or town do you live in?'));
+        this.widgets = [
+            {key: 'gender', widget: this.widgetFactories.select.newElement('Gender', gender_options)},
+            {key: 'yob', widget: this.widgetFactories.textbox.newElement('Year of birth')},
+            {key: 'education_level', widget: this.widgetFactories.select.newElement('What is your highest education level?', edu_options)},
+            {key: 'race', widget: this.widgetFactories.select.newElement('Which racial group do you belong to?', race_options)},
+            {key: 'city', widget: this.widgetFactories.textbox.newElement('Which city or town do you live in?')}
+        ]
+
+        this.widgets.forEach(el => {
+            this.appendChild(el.widget.container);
+        })
+    }
+
+    getResult() {
+        const js = {}
+        this.widgets.forEach(el => {
+            js[el.key] = el.widget.getResult();
+        })
+
+        return js
     }
 
 }

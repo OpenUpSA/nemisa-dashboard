@@ -3,8 +3,8 @@ import {Section} from './base';
 import {mostUsedSkill} from '../../strings';
 
 export class SectionDigitalDeployment extends Section {
-    constructor(block, title, widgets) {
-        super(block, title, widgets);
+    constructor(block, title, widgetFactories) {
+        super(block, title, widgetFactories);
         this.addWidgets();
     }
 
@@ -14,8 +14,11 @@ export class SectionDigitalDeployment extends Section {
             options: ['Never', 'Rarely', 'Half the time', 'Often', 'Always', 'N/A'],
             title: 'How often do you use digital technologies to perform the following ACTIVITIES in your workplace?'
         }
-        const multiradio = this.widgets.multiradio.newElement(data);
-        console.log(multiradio.getResult());
-        this.appendChild(multiradio.container);
+        this.multiradio = this.widgetFactories.multiradio.newElement(data);
+        this.appendChild(this.multiradio.container);
+    }
+
+    getResult() {
+        return {attitude: this.multiradio.getResult()}
     }
 }

@@ -3,8 +3,8 @@ import {Section} from './base';
 import {attitudes} from '../../strings';
 
 export class SectionAttitudes extends Section {
-    constructor(block, title, widgets) {
-        super(block, title, widgets);
+    constructor(block, title, widgetFactories) {
+        super(block, title, widgetFactories);
         this.addWidgets();
     }
 
@@ -14,8 +14,12 @@ export class SectionAttitudes extends Section {
             options: ['Strongly disagree', 'Disagree', 'Neutral', 'Agree', 'Strongly Agree'],
             title: 'What is your attitude toward using digital technologies?'
         }
-        this.multiradio = this.widgets.multiradio.newElement(data);
+        this.multiradio = this.widgetFactories.multiradio.newElement(data);
         this.appendChild(this.multiradio.container);
+    }
+
+    getResult() {
+        return {attitude: this.multiradio.getResult()}
     }
 
 }

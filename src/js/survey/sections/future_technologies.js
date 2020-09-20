@@ -3,8 +3,8 @@ import {Section} from './base';
 import {futureTech} from '../../strings';
 
 export class SectionFutureTechnologies extends Section {
-    constructor(block, title, widgets) {
-        super(block, title, widgets);
+    constructor(block, title, widgetFactories) {
+        super(block, title, widgetFactories);
         this.addWidgets();
     }
 
@@ -14,8 +14,11 @@ export class SectionFutureTechnologies extends Section {
             options: ['Yes', 'No', 'N/A'],
             title: 'In your opinion what are the other digital technologies you will require to perform your job in the future? If you are unsure, leave blank.'
         }
-        this.multiradio = this.widgets.multiradio.newElement(data);
+        this.multiradio = this.widgetFactories.multiradio.newElement(data);
         this.appendChild(this.multiradio.container);
     }
 
+    getResult() {
+        return {futureTech: this.multiradio.getResult()}
+    }
 }

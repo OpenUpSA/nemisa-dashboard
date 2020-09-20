@@ -4,18 +4,28 @@ import {WidgetFactory} from './base';
 class SelectBox {
     constructor(container, options) {
         this.container = container;
+        this.options - options;
 
         this.draw(options);
+
+        this.currentValue = null;
     }
 
     draw(options) {
+        const self = this;
+        const defaultOption = [{"key": "not_answered", "label": "Select a value"}]
         const selectBox = d3.select(this.container).select('select');
         const elOptions = selectBox.selectAll('option');
         const tmplOption = elOptions.nodes()[0].cloneNode(true);
         elOptions.remove();
 
+        selectBox.on('change', function(ev, d) {
+            const idx =ev.target.options.selectedIndex;
+            this.currentValue = options[idx - 1];
+        })
+
         selectBox.selectAll('option')
-            .data(options)
+            .data(defaultOption.concat(options))
             .enter()
             .append(function(d) {
                 const newOption = d3
@@ -28,6 +38,9 @@ class SelectBox {
             })
     }
 
+    getResult() {
+        return this.currentValue
+    }
 }
 
 export class SelectWidgetFactory extends WidgetFactory {

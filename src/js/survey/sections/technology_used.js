@@ -3,8 +3,8 @@ import {Section} from './base';
 import {currentTech} from '../../strings';
 
 export class SectionTechnologyUsed extends Section {
-    constructor(block, title, widgets) {
-        super(block, title, widgets);
+    constructor(block, title, widgetFactories) {
+        super(block, title, widgetFactories);
         this.addWidgets();
     }
 
@@ -14,9 +14,11 @@ export class SectionTechnologyUsed extends Section {
             options: ['Yes', 'No', 'N/A'],
             title: 'Among the following digital technologies which ones do you currently use to perform your daily duties.'
         }
-        const multiradio = this.widgets.multiradio.newElement(data);
-        console.log(multiradio.getResult());
-        this.appendChild(multiradio.container);
+        this.multiradio = this.widgetFactories.multiradio.newElement(data);
+        this.appendChild(this.multiradio.container);
     }
 
+    getResult() {
+        return {technology_used: this.multiradio.getResult()}
+    }
 }

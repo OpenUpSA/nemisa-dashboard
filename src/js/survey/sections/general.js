@@ -2,12 +2,13 @@ import {d3} from '../../d3';
 import {Section} from './base';
 
 export class SectionGeneral extends Section {
-    constructor(block, title, widgets) {
-        super(block, title, widgets);
+    constructor(block, title, widgetFactories) {
+        super(block, title, widgetFactories);
         this.addWidgets();
     }
 
     addWidgets() {
+        const self = this;
         const options = [
             {key: '_ind_ict', label: 'Communication and Information Technology'},
             {key: '_ind_domestic', label: 'Domestic Work'},
@@ -22,8 +23,23 @@ export class SectionGeneral extends Section {
             {key: '_ind_charity', label: 'Non-profit and Charity'},
         ]
 
-        this.appendChild(this.widgets.textbox.newElement('Full Name'));
-        this.appendChild(this.widgets.textbox.newElement('Email'));
-        this.appendChild(this.widgets.select.newElement('Industry', options).container);
+        this.widgets = [
+            {key: 'fullname', widget: this.widgetFactories.textbox.newElement('Full Name')},
+            {key: 'email', widget: this.widgetFactories.textbox.newElement('Email')},
+            {key: 'industry', widget: this.widgetFactories.select.newElement('Industry', options)}
+        ]
+
+        this.widgets.forEach(el => {
+            self.appendChild(el.widget.container);
+        })
+    }
+
+    getResult() {
+        const js = {}
+        this.widgets.forEach(el => {
+            js[el.key] = el.widget.getResult();
+        })
+
+        return js
     }
 }

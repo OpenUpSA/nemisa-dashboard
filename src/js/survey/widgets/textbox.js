@@ -1,6 +1,21 @@
 import {d3} from '../../d3';
 import {WidgetFactory} from './base';
 
+class TextBox {
+    constructor(container, title) {
+        this.container = container;
+        this.draw(title);
+    }
+
+    draw(title) {
+        d3.select(this.container).select('.field-label').text(title);
+    }
+
+    getResult() {
+        return d3.select(this.container).select('.text-field').value;
+    }
+}
+
 export class TextWidgetFactory extends WidgetFactory {
     constructor(template) {
         super(template);
@@ -8,8 +23,6 @@ export class TextWidgetFactory extends WidgetFactory {
 
     newElement(title) {
         const element = super.newElement();
-        d3.select(element).select('.field-label').text(title);
-        return element
+        return new TextBox(element, title)
     }
-
 }
