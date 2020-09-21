@@ -1,0 +1,33 @@
+{
+  "name": "k4i_dashboard",
+  "version": "1.0.0",
+  "description": "An api that manages the k4i survey",
+  "main": "assets/js/index.js",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "dev": "parcel watch assets/scss/k4i_dashboard.scss assets/css/*.css assets/fonts/* assets/images/* assets/js/k4i_dashboard.js assets/js/survey/form.js assets/js/webflow.js --out-dir assets/bundles",
+    "build": "parcel build assets/scss/k4i_dashboard.scss assets/js/k4i_dashboard.js --out-dir assets/bundles --no-content-hash"
+  },
+  "dependencies": {
+    "parcel-bundler": "^1.12.4",
+    "sass": "^1.25.1-test.1",
+    "babel-polyfill": "^6.26.0",
+    "circlepacker": "^1.1.1",
+    "crossfilter2": "^1.5.2",
+    "d3-array": "^2.7.1",
+    "d3-fetch": "^2.0.0",
+    "d3-force": "^2.1.1",
+    "d3-format": "^2.0.0",
+    "d3-hierarchy": "^2.0.0",
+    "d3-scale": "^3.2.2",
+    "d3-scale-chromatic": "^2.0.0",
+    "d3-selection": "^2.0.0",
+    "d3-tip": "^0.9.1",
+    "d3-transition": "^2.0.0",
+    "dc": "^4.0.5",
+    "fetch": "^1.1.0",
+    "isomorphic-fetch": "^2.2.1",
+    "shx": "^0.3.2"
+  }
+}
