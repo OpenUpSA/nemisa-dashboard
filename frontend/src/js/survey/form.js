@@ -1,6 +1,9 @@
 import {d3} from '../d3';
 import {widget_factories} from './widgets/factories'
 import {sections} from './sections/sections'
+// import fetch from 'fetch'
+import fetch from 'isomorphic-fetch'
+import regeneratorRuntime from "regenerator-runtime";
 
 class Form {
     constructor() {
@@ -23,7 +26,7 @@ class Form {
     addButton() {
         const self = this;
         d3.select('.survey__wrap').append('button').text('Submit form').on('click', function() {
-            console.log(self.getResult());
+            console.log(self.submitSurvey());
         })
     }
 
@@ -74,6 +77,20 @@ class Form {
 
         return this.formSections;
 
+    }
+
+    async submitSurvey() {
+        const data = {data: this.getResult()};
+        let response = await fetch('http://localhost:8000/responses/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json;charset=utf-8'
+            },
+            body: JSON.stringify(data)
+        });
+
+        let result = await response.json();
+        alert(result.message);
     }
 }
 
