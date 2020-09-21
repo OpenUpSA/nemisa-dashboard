@@ -92,7 +92,7 @@ class Form {
         });
 
         let result = await response.json();
-        
+        window.location.replace('/dashboard/');
     }
 }
 
