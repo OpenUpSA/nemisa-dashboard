@@ -14,7 +14,6 @@ router.register(r'responses', views.SurveyResponseViewSet)
 urlpatterns = [
 
     path('', views.Index.as_view()),
-   # path('', views.Index.as_view()),
     path('index.html', RedirectView.as_view(url='/')),
     path('survey/index.html', RedirectView.as_view(url='/')),
     path('dashboard/index.html', RedirectView.as_view(url='/')),
