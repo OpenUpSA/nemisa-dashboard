@@ -53,7 +53,6 @@ export class FilterBar extends dc.BaseMixin {
     }
 
     render() {
-        console.log("Being rendered")
         this.elParent = this._parent;
         this.elDefault = $('.chart-filter--default', this._parent);
         this.elFilter = $('.chart-filter', this._parent)[2]

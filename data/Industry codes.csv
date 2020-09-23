@@ -1,0 +1,22 @@
+Sector,Division,Description
+A,01-03,"Agriculture, forestry and fishing"
+B,05-09,Mining and quarrying
+C,10-33,Manufacturing
+D,35,"Electricity, gas, steam and air conditioning supply"
+E,36-39,"Water supply; sewerage, waste management and remediation activities"
+F,41-43,Construction
+G,45-47,Wholesale and retail trade; repair of motor vehicles and motorcycles
+H,49-53,Transportation and storage
+I,55-56,Accommodation and food service activities
+J,58-63,Information and communication
+K,64-66,Financial and insurance activities
+L,68,Real estate activities
+M,69-75,"Professional, scientific and technical activities"
+N,77-82,Administrative and support service activities
+O,84,Public administration and defence; compulsory social security
+P,85,Education
+Q,86-88,Human health and social work activities
+R,90-93,"Arts, entertainment and recreation"
+S,94-96,Other service activities
+T,97-98,Activities of households as employers; undifferentiated goods- and services-producing activities of households for own use
+U,99,"Activities of extraterritorial organizations and bodies, not economically active people, unemployed people etc."
