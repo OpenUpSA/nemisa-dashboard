@@ -65,9 +65,13 @@ export class Filter {
                     return 2020 - yob
                 return 0;
             })},
-            industry: {label: "Industry", dimension: this.crossfilter.dimension(el => el["Industry"])},
-            // skillsLearning: this.crossfilter.dimension(el => el[skillsExternalTraining]),
-            // mostUsedSkill: dim(el => usesSkill(el[mostUsedSkill[0]]))
+            industry: {label: "Industry", dimension: this.crossfilter.dimension(el => {
+                let industry = el["Industry"]
+                let trimmedIndustry = industry.substr(0, 30)
+                if (trimmedIndustry < industry)
+                    return trimmedIndustry + '...'
+                return trimmedIndustry; 
+            })},
             mostUsedSkill: mostUsedSkill.map(skill => {
                 return ({
                     "label": skill.label,
