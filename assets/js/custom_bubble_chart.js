@@ -64,8 +64,8 @@ export class CustomBubbleChart extends BaseMixin {
 
         this._nodes.forEach(node => {
             node.selected = Boolean(node.dimension.currentFilter())
-            node.count = node.group.all()[0].value
-            node.radius = node.group.all()[0].value
+            node.count = node.group.all()[1].value
+            node.radius = node.group.all()[1].value
         })
 
         return this._nodes;
