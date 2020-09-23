@@ -10,7 +10,7 @@ import {max, min, maxIndex, minIndex} from 'd3-array';
 import {format} from 'd3-format';
 import tip from 'd3-tip';
 
-export const d3 = {
+const d3 = {
     select, selectAll,
     scaleLinear, scaleSqrt, scaleOrdinal, scaleSequential,
     interpolateRdYlGn,
@@ -21,3 +21,5 @@ export const d3 = {
     tip
 }
 
+
+export default d3

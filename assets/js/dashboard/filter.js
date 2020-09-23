@@ -7,7 +7,7 @@ import {
     futureTech,
     perceivedRisk,
     attitudes,
-} from './strings';
+} from '../strings';
 
 function usesSkill(key) {
     const values = {
@@ -65,7 +65,7 @@ export class Filter {
                     return 2020 - yob
                 return 0;
             })},
-            industry: {label: "Industry", dimension: this.crossfilter.dimension(el => el["Job Title"])},
+            industry: {label: "Industry", dimension: this.crossfilter.dimension(el => el["Industry"])},
             // skillsLearning: this.crossfilter.dimension(el => el[skillsExternalTraining]),
             // mostUsedSkill: dim(el => usesSkill(el[mostUsedSkill[0]]))
             mostUsedSkill: mostUsedSkill.map(skill => {

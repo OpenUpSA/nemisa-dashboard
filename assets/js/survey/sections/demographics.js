@@ -1,4 +1,4 @@
-import {d3} from '../../d3';
+import d3 from '../../d3';
 import {Section} from './base';
 
 export class SectionDemographics extends Section {

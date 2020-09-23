@@ -15,9 +15,8 @@ assert len(employees_js) == len(employees_data)
 headers = {"content-type": "application/json;charset=utf-8"}
 for (raw_data, js) in zip(employees_data, employees_js):
     industry_code = raw_data["Industry code"]
-    print(industries)
-    industry = industries[industry_code]
-    js["Industry"] = industry
+    industry = industries[industry_code]["Description"]
+    js["data"]["Industry"] = industry
     #data = {"data": js}
     data = js
     r = requests.post(hostname, headers=headers, data=json.dumps(data))

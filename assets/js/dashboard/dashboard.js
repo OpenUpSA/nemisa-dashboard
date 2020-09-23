@@ -1,12 +1,13 @@
 
-import 'babel-polyfill';
+// import 'babel-polyfill';
 import * as dc from 'dc';
 import crossfilter from 'crossfilter2';
 
-import {d3} from './d3';
+import d3 from '../d3';
+import {skillsExternalTraining} from '../strings';
+
 import {WidgetContainer} from './widgets';
 import {FilteredCount} from './filtered_count';
-import {skillsExternalTraining} from './strings';
 import {ScreenElements} from './screen_elements';
 import {CustomBubbleChart} from './custom_bubble_chart';
 import {Filter} from './filter';
@@ -18,6 +19,7 @@ import {FilterBar} from './filter_bar';
 d3.json('/api/responses/').then(function(data) {
     data = data.map(d => d.data);
     const dataFilter = new Filter(data);
+
     const widgetContainer = new WidgetContainer();
     const filteredCount = new FilteredCount(dataFilter);
     const screenElements = new ScreenElements(dataFilter);
@@ -30,6 +32,8 @@ d3.json('/api/responses/').then(function(data) {
     const dimAttitudes = dataFilter.dimensions['attitudes'];
 
     const bubbleUsedSkills = new CustomBubbleChart($('.summary-block')[0], dataFilter);
+
+
     const bubbleLearntSkills = new CustomBubbleChart($('.summary-block')[1], dataFilter);
     const bubbleCurrentTech = new CustomBubbleChart($('.summary-block')[2], dataFilter);
     const bubbleFutureTech = new CustomBubbleChart($('.summary-block')[3], dataFilter);
@@ -37,8 +41,11 @@ d3.json('/api/responses/').then(function(data) {
     const bubbleAttitudes = new CustomBubbleChart($('.summary-block')[5], dataFilter);
     const c3 = d3;
     const chartGender = new GenderPie(dataFilter, $('.demographics__grid .block .results-card__chart .chart-embed')[2])
+
+
+
     const chartAge = new AgeChart(dataFilter, $('.demographics__grid .block .results-card__chart .chart-embed')[1])
-    // const chartIndustry = new IndustryChart(dataFilter, $('.demographics__grid .block .results-card__chart .chart-embed')[0])
+    const chartIndustry = new IndustryChart(dataFilter, $('.demographics__grid .block .results-card__chart .chart-embed')[0])
     const filterBar = new FilterBar($('.chart-filters__inner')[0], dataFilter);
 
     bubbleUsedSkills.dimensions(dimSkills);
@@ -49,6 +56,7 @@ d3.json('/api/responses/').then(function(data) {
     bubbleCurrentTech.dimensions(dimCurrentTech);
 
     dc.renderAll();
+    return
 
 })
 

@@ -1,10 +1,10 @@
 import * as dc from 'dc';
-import {d3} from './d3';
+import d3 from '../d3';
 
-export class AgeChart {
+export class IndustryChart {
     constructor(dataFilter, container) {
         this.container = container;
-        this.dimension= dataFilter.dimensions['age'].dimension;
+        this.dimension= dataFilter.dimensions['industry'].dimension;
         this.group= this.dimension.group().reduceCount();
         this.chart = null;
 
@@ -13,14 +13,14 @@ export class AgeChart {
     }
 
     prepareWidget(container) {
-        this.chart = new dc.BarChart(container).elasticY(true)
+        this.chart = new dc.RowChart(container).elasticX(false);
 
         this.chart
           .dimension(this.dimension)
           .group(this.group)
-          .xAxisLabel("Age")
-          .yAxisLabel("Number of responses")
-          .x(d3.scaleLinear().domain([0, 70]))
+          .data(function (group) { return group.top(6); })
+          // .fixedBarHeight(20)
+          // .x(d3.scaleLinear().domain([0, 70]))
     }
 
     prepareDOM() {

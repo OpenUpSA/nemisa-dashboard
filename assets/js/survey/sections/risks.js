@@ -1,4 +1,4 @@
-import {d3} from '../../d3';
+import d3 from '../../d3';
 import {Section} from './base';
 import {perceivedRisk} from '../../strings';
 

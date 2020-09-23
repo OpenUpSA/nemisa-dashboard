@@ -1,4 +1,4 @@
-import {d3} from '../d3';
+import d3 from '../d3';
 import {widget_factories} from './widgets/factories'
 import {sections} from './sections/sections'
 // import fetch from 'fetch'

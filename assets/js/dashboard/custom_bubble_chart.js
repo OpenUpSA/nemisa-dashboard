@@ -1,8 +1,9 @@
 import * as dc from 'dc';
-import {d3} from './d3';
 import {BaseMixin} from 'dc';
 
-export class CustomBubbleChart extends BaseMixin {
+import d3 from '../d3';
+
+export class CustomBubbleChart extends dc.BaseMixin {
     constructor(parent, dataFilter, group) {
         super();
 
@@ -16,7 +17,6 @@ export class CustomBubbleChart extends BaseMixin {
         this._nodes = null;
         this._minRadiusLabel = 20;
         this._total = dataFilter.total();
-
         dc.registerChart(this, group);
     }
 

@@ -1,5 +1,7 @@
 import * as dc from 'dc';
-import {d3} from './d3';
+import d3 from '../d3';
+
+// import {BaseMixin} from 'dc';
 
 export class FilterBar extends dc.BaseMixin {
     constructor(parent, dataFilter, group) {

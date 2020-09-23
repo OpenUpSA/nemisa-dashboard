@@ -1,5 +1,5 @@
 import {dataCount as dcDataCount}  from 'dc';
-import {d3} from './d3';
+import d3 from '../d3';
 
 // const clsFilter = '.filtered-value';
 const clsFilter = '.chart-filters__filtered_inner';

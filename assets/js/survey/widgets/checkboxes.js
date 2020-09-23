@@ -1,4 +1,4 @@
-import {d3} from '../../d3';
+import d3 from '../../d3';
 import {WidgetFactory} from './base';
 
 export class CheckboxesWidgetFactory extends WidgetFactory {
