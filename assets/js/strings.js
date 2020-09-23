@@ -78,3 +78,27 @@ export const attitudes = [
     {key: 'usage_traditional_tools', label: 'No real need'},
     {key: 'usage_limit_capacity', label: 'Limits human capacity'}
 ]
+
+export const industries = [
+    {key: 'A', label: 'Agriculture, forestry and fishing'},
+    {key: 'B', label: 'Mining and quarrying'},
+    {key: 'C', label: 'Manufacturing'},
+    {key: 'D', label: 'Electricity, gas, steam and air conditioning supply'},
+    {key: 'E', label: 'Water supply; sewerage, waste management and remediation activities'},
+    {key: 'F', label: 'Construction'},
+    {key: 'G', label: 'Wholesale and retail trade; repair of motor vehicles and motorcycles'},
+    {key: 'H', label: 'Transportation and storage'},
+    {key: 'I', label: 'Accommodation and food service activities'},
+    {key: 'J', label: 'Information and communication'},
+    {key: 'K', label: 'Financial and insurance activities'},
+    {key: 'L', label: 'Real estate activities'},
+    {key: 'M', label: 'Professional, scientific and technical activities'},
+    {key: 'N', label: 'Administrative and support service activities'},
+    {key: 'O', label: 'Public administration and defence; compulsory social security'},
+    {key: 'P', label: 'Education'},
+    {key: 'Q', label: 'Human health and social work activities'},
+    {key: 'R', label: 'Arts, entertainment and recreation'},
+    {key: 'S', label: 'Other service activities'},
+    {key: 'T', label: 'Activities of households as employers; undifferentiated goods- and services-producing activities of households for own use'},
+    {key: 'U', label: 'Activities of extraterritorial organizations and bodies, not economically active people, unemployed people etc.'}
+]
