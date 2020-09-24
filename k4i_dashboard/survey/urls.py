@@ -31,14 +31,19 @@ urlpatterns = [
 
     path('js/<path:path>', RedirectView.as_view(url='/static/js/%(path)s')),
     path('css/<path:path>', RedirectView.as_view(url='/static/css/%(path)s')),
+    path('scss/<path:path>', RedirectView.as_view(url='/static/scss/%(path)s')),
     path('fonts/<path:path>', RedirectView.as_view(url='/static/fonts/%(path)s')),
     path('images/<path:path>', RedirectView.as_view(url='/static/images/%(path)s')),
+
     path('survey/js/<path:path>', RedirectView.as_view(url='/static/js/%(path)s')),
     path('survey/css/<path:path>', RedirectView.as_view(url='/static/css/%(path)s')),
+    path('survey/scss/<path:path>', RedirectView.as_view(url='/static/scss/%(path)s')),
     path('survey/fonts/<path:path>', RedirectView.as_view(url='/static/fonts/%(path)s')),
     path('survey/images/<path:path>', RedirectView.as_view(url='/static/images/%(path)s')),
+    
     path('dashboard/js/<path:path>', RedirectView.as_view(url='/static/js/%(path)s')),
     path('dashboard/css/<path:path>', RedirectView.as_view(url='/static/css/%(path)s')),
+    path('dashboard/scss/<path:path>', RedirectView.as_view(url='/static/scss/%(path)s')),
     path('dashboard/fonts/<path:path>', RedirectView.as_view(url='/static/fonts/%(path)s')),
     path('dashboard/images/<path:path>', RedirectView.as_view(url='/static/images/%(path)s')),
 
