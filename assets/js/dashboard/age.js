@@ -1,6 +1,7 @@
 import * as dc from 'dc';
 import d3 from '../d3';
 
+
 export class AgeChart {
     constructor(dataFilter, container) {
         this.container = container;

@@ -19,16 +19,6 @@ export class IndustryChart extends dc.RowChart {
           .dimension(this._dimension)
           .group(this._group)
           .data(function (group) { return group.top(12); })
-          .colorCalculator((d, i) => {
-
-            console.log(d)
-            if (this._isSelectedRow(d))
-                return "#9D1E14";
-            if (i == 0)
-                return "#EE7B40";
-            return "#CCCCCC";
-
-          })
           .gap(15)
           .height(400)
           .labelOffsetX(-10)
