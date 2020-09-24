@@ -11,6 +11,10 @@ $highlightBase: #EE7B40;
 $highlightDeselected: #F5BC9A;
 $highlightHover: #E46422;
 
+.chart-filter {
+  display: none;
+}
+
 .industry-chart {
   .row {
     rect {
