@@ -1,3 +1,185 @@
-body {
-    background-color: grey;
+.demographics__grid {
+  grid-template-areas: ". . . . . ." "age age age age gender gender" "industry industry industry industry industry industry";
+}
+
+$baseGrey: #CCCCCC;
+$selectedGrey: #9D1E14;
+$deselectedGrey: #CFCFCF;
+$hoverGrey: #6F6F6F;
+
+$highlightBase: #EE7B40;
+$highlightDeselected: #F5BC9A;
+$highlightHover: #E46422;
+
+.industry-chart {
+  .row {
+    rect {
+      fill: $baseGrey;
+
+      &.selected, &.selected:hover {
+        fill: $selectedGrey;
+      }
+
+      &.deselected {
+        fill: $deselectedGrey;
+      }
+
+      &:hover {
+        fill: $hoverGrey;
+      }
+    } 
+
+  }
+
+  .row._0 {
+      rect {
+        fill: $highlightBase;
+
+        &.selected {
+          fill: #highlightBase;
+
+          &:hover {
+            fill: $selectedGrey;
+          }
+        }
+
+        &.deselected {
+          fill: $highlightDeselected;
+        }
+
+        &:hover {
+          fill: $highlightHover;
+        }
+      }
+  }
+
+  text {
+    font-size: 12px;
+    text-anchor: end;
+  }
+
+}
+
+/* gender pie chart */
+.demographics__grid .block:nth-child(4) {
+  .pie-label-group text {
+    fill: white;
+  }
+
+  path {
+    fill: $baseGrey;
+    stroke: white;
+    stroke-width: 2px;
+
+    &:hover {
+      fill: $hoverGrey;
+    }
+  }
+
+  .deselected path {
+    fill: $deselectedGrey;
+  }
+
+  .selected path {
+    fill: $selectedGrey;
+  }
+
+  .largest {
+    path {
+      fill: $highlightBase
+    }
+
+    path:hover {
+      fill: $highlightHover;
+    }
+
+    &.selected path {
+      fill: $selectedGrey;
+
+    }      
+
+    &.deselected path {
+      fill: $highlightDeselected;
+    }
+  }
+}
+
+
+.summary-grid .circle {
+  text {
+    fill: white;
+    font-size: 10px;
+    text-anchor: middle;
+    dominant-baseline: middle;
+    cursor: pointer;
+  }  
+
+  circle {
+    fill: $baseGrey;
+    stroke: #8E8E8E;
+    cursor: pointer;
+
+    &:hover {
+      fill: $hoverGrey;
+
+    }
+  }
+
+  &.selected circle {
+    fill: $selectedGrey;
+
+    &.largest {
+       fill: $highlightBase; 
+    }
+  }
+
+  &.deselected circle {
+    fill: $deselectedGrey;
+
+    &.largest {
+      fill: $highlightDeselected;
+    }
+  }
+
+  .largest {
+    fill: $highlightBase;
+
+    &:hover {
+      fill: $highlightHover;
+    } 
+
+  }
+}
+
+/* Age barchart */
+
+.demographics__grid .block:nth-child(3) .dc-chart {
+  .bar {
+    fill: $selectedGrey;
+  }
+
+  .handle {
+    fill: #2A2A2A;
+    height: 100px;
+  }
+
+  rect {
+    &.selection {
+      fill: $selectedGrey;
+    }
+
+    &.deselection {
+      fill: $deselectedGrey;
+      
+    }
+  }
+}
+
+
+.tooltip {
+  background-color: white;
+  fill: white;
+  border: solid 1px;
+  padding: 5px;
+  z-index: 1000;
 }

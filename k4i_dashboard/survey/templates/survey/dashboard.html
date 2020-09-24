@@ -12,6 +12,7 @@
   <link href="css/normalize.css" rel="stylesheet" type="text/css">
   <link href="css/webflow.css" rel="stylesheet" type="text/css">
   <link href="css/k4i-nemisa.webflow.css" rel="stylesheet" type="text/css">
+  <link href="scss/k4i_dashboard.css" rel="stylesheet" type="text/css">
   <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js" type="text/javascript"></script>
   <script type="text/javascript">WebFont.load({  google: {    families: ["Karla:regular,italic,700"]  }});</script>
   <!-- [if lt IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js" type="text/javascript"></script><![endif] -->
@@ -723,126 +724,13 @@
   overflow: hidden;
   text-overflow: ellipsis;
   }
-/* Custom styles */
-.tooltip {
-  background-color: white;
-  fill: white;
-  border: solid 1px;
-  padding: 5px;
-  z-index: 1000;
-}
-.demographics__grid .block:nth-child(3) .dc-chart  .bar {
-    fill: #9D1E14;
-}
-.demographics__grid .block:nth-child(3) .dc-chart rect.selection {
-    fill: #9D1E14;
-}
-.demographics__grid .block:nth-child(3) .dc-chart rect.deselected {
-  fill: #CFCFCF;
-}
-/* pie chart */
-.demographics__grid .block:nth-child(4) .pie-slice-group path {
-  fill: #CFCFCF;
-  stroke: white;
-  stroke-width: 2px;
-}
-.demographics__grid .block:nth-child(4) .pie-slice-group .largest path {
-  fill: #EE7B40;
-}
-.demographics__grid .block:nth-child(4) .pie-label-group text {
-  fill: white;
-}
-.demographics__grid .block:nth-child(4) .deselected path {
-  fill: #CCCCCC;
-}
-.demographics__grid .block:nth-child(4) .selected path {
-  fill: #9D1E14;
-}
-.demographics__grid .block:nth-child(4) .selected.largest path {
-  fill: #9D1E14;
-}
-.demographics__grid .block:nth-child(4) .deselected.largest path {
-  fill: #F2B997;
-}
 
 
-.industry-chart .row rect {
-  fill: #CCCCCC
-}
-
-.industry-chart .row rect.selected {
-  fill: #9D1E14;
-}
-
-.industry-chart .row rect.deselected {
-  fill: #CFCFCF
-}
-
-.industry-chart .row rect:hover {
-  fill: #6F6F6F;
-}
-
-.industry-chart .row._0 rect {
-  fill: #EE7B40;
-}
-
-.industry-chart .row._0 rect.selected {
-  fill: #EE7B40;
-}
-
-.industry-chart .row._0 rect.deselected {
-  fill: #F5BC9A;
-}
-
-.industry-chart .row._0 rect:hover {
-  fill: #9D1E14;
-}
-
-.industry-chart .row rect.selected:hover {
-  fill: #9D1E14;
-}
-
-.industry-chart .row text {
-  font-size: 12px;
-  text-anchor: end;
-
-}
 
 
-/* circle widgets */
-.summary-grid .circle text {
-  fill: white;
-  font-size: 10px;
-  text-anchor: middle;
-  dominant-baseline: middle;
-  cursor: pointer;
-}
-/* regular circles */
-.summary-grid circle {
-  fill: #9F9F9F;
-}
-.summary-grid circle:hover {
-  fill: #6F6F6F;
-}
-.summary-grid .circle.selected circle {
-  fill: #9D1E14;
-}
-.summary-grid .circle.deselected circle {
-  fill: #CCCCCC;
-}
-.summary-grid .largest {
-  fill: #EE7B40;
-}
-.summary-grid circle {
-  stroke: #8E8E8E;
-  cursor: pointer;
-}
-.summary-grid circle.largest:hover, .summary-grid .selected circle.largest {
-  fill: #EE7B40;
-}
-.summary-grid .deselected circle.largest {
-  fill: #F2B997;
-}
+
+
+
 </style>
   <style>
 .truncate {
