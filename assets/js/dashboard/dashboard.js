@@ -59,20 +59,3 @@ d3.json('/api/responses/').then(function(data) {
     return
 
 })
-
-
-// bubbleUsedSkills
-//     .groupAll(groupAllSpeed)
-//     .colors(d3)
-
-
-
-// widgetContainer.addWidget(filteredCount);
-
-// console.log(data)
-// const widgets = [filteredCount];
-
-// var filtering = results.dimension(function(d) { return d[skillsExternalTraining]; });
-// console.log(filtering.filter("Agree222").reduceCount())
-// // console.log(filtering.filter("Agree").group().reduceCount().size());
-// // console.log(results.groupAll().reduceCount().value());
