@@ -9,8 +9,9 @@ export class CustomBubbleChart extends dc.BaseMixin {
 
         this._groupAll = null;
         this._colors = null;
-        this._width = this._height = 200;
-        this._minRadius = 5, this._maxRadius = 20;
+        this._width = 155;
+        this._height = 100;
+        this._minRadius = 3, this._maxRadius = 14;
         this._duration = 50;
         this._root = d3.select(parent);
         this._circles = null;
