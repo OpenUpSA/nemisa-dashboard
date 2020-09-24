@@ -22,7 +22,16 @@ export class FilterBar extends dc.BaseMixin {
         this.elDefault.css("display", "none");
     }
 
-    removeFilter(label) {
+    removeFilter(filter) {
+        const label = filter.label;
+        const dimension = filter.dimension;
+
+        dc.chartRegistry.list().forEach(chart => {
+            if (chart.dimension() == dimension) {
+                chart.filterAll();
+            }
+        })
+
         if (this._filters[label]) {
             this._filters[label].el.remove();
             this._filters[label].filter.dimension.filterAll();
@@ -45,7 +54,7 @@ export class FilterBar extends dc.BaseMixin {
             el.css('display', 'flex')
             $('.chart-filter__name', el).text(filter.label);
             $('.fa-icon', el).click(ev => {
-                this.removeFilter(filter.label);
+                this.removeFilter(filter);
             })
 
             this._filters[filter.label] = {
@@ -80,7 +89,7 @@ export class FilterBar extends dc.BaseMixin {
                 if (currentFilter) {
                     this.drawFilter(d);
                 } else if (this._filters[d.label]) {
-                    this.removeFilter(d.label);
+                    this.removeFilter(d);
                 }
             })
         })
