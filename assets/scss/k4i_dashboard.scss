@@ -160,7 +160,9 @@ $highlightHover: #E46422;
 
   .handle {
     fill: #2A2A2A;
-    height: 100px;
+    height: 50px;
+    width: 8px;
+    transform: translate(0, 50px);
   }
 
   rect {
