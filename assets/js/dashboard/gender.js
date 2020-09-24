@@ -13,7 +13,7 @@ export class GenderPie extends dc.PieChart {
 
         this.dimension(this.dimGender).group(this.grpGender);
         this.label(function(d) {
-            const perc = d.value / dataFilter.total() 
+            const perc = d.value / dataFilter.crossfilter.allFiltered().length 
             const sPerc = d3.format('.0%')(perc)
 
             return `${d.key}: ${sPerc}`;
