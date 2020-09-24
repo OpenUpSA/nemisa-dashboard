@@ -63,6 +63,17 @@ export class FilterBar extends dc.BaseMixin {
         }
     }
 
+    removeAllFilters() {
+        const filters = Object.values(this.dataFilter.dimensions);
+        filters.forEach(filter => {
+            if (!(filter instanceof Array))
+                filter = [filter];
+            filter.forEach(f => {
+                this.removeFilter(f);
+            })
+        })
+    }
+
     render() {
         this.elParent = this._parent;
         this.elDefault = $('.chart-filter--default', this._parent);
@@ -70,6 +81,12 @@ export class FilterBar extends dc.BaseMixin {
 
         $('.chart-filter', this._parent)[1].remove();
         $('.chart-filter', this._parent)[1].remove();
+
+        d3.select('.chart-filters__clear .button').on('click', ev => {
+            dc.chartRegistry.list().forEach(chart => {
+                this.removeAllFilters();
+            })
+        })
 
         this.displayNoFilters();
 
