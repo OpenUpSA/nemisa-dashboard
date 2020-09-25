@@ -41,7 +41,7 @@ export class IndustryChart extends dc.RowChart {
             if (_extent[1] < 0) {
                 _extent[1] = 0;
             }
-            const startX = 180;
+            const startX = 230;
             this._x = d3.scaleLinear().domain(_extent)
                 .range([startX, this.effectiveWidth()]);
         }
