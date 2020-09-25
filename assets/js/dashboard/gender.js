@@ -29,6 +29,12 @@ export class GenderPie extends dc.PieChart {
 
         super._drawChart()
 
+
+        this._tip = d3.tip().attr('class', 'tooltip').html(function(d) {
+            return `${d.data.key}: ${d.value}`; 
+        });
+        this.svg().call(this._tip);
+
         this._g.select(`g.${this._sliceGroupCssClass}`)
                 .selectAll(`g.${this._sliceCssClass}`)
                 .each(function(d) {
@@ -39,6 +45,12 @@ export class GenderPie extends dc.PieChart {
                         else
                             d3.select(this).classed('largest', false)
                     }
+                })
+                .on("mouseover", function(ev, d, i, j) {
+                    self._tip.show(d, this);
+                })
+                .on("mouseout", function(ev, d) {
+                    self._tip.hide(d, this);
                 })
     }
 }
