@@ -67,7 +67,7 @@ export class Filter {
             })},
             industry: {label: "Industry", dimension: this.crossfilter.dimension(el => {
                 let industry = el["Industry"]
-                let trimmedIndustry = industry.substr(0, 30)
+                let trimmedIndustry = industry.substr(0, 40)
                 if (trimmedIndustry < industry)
                     return trimmedIndustry + '...'
                 return trimmedIndustry; 
