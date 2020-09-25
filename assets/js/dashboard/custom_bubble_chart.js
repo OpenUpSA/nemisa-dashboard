@@ -7,7 +7,6 @@ export class CustomBubbleChart extends dc.BaseMixin {
     constructor(parent, dataFilter, group) {
         super();
 
-        this._groupAll = null;
         this._colors = null;
         this._width = 155;
         this._height = 100;
@@ -16,7 +15,7 @@ export class CustomBubbleChart extends dc.BaseMixin {
         this._root = d3.select(parent);
         this._circles = null;
         this._nodes = null;
-        this._minRadiusLabel = 20;
+        this._minRadiusLabel = 14;
         this._total = dataFilter.total();
         dc.registerChart(this, group);
     }
