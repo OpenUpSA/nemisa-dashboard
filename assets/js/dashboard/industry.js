@@ -1,6 +1,20 @@
 import * as dc from 'dc';
 import d3 from '../d3';
 
+function wrapper(width, padding = 10) {
+    return function() {
+        const self = d3.select(this)
+        let textLength = self.node().getComputedTextLength(),
+            text = self.text();
+
+        while (textLength > (width - 2 * padding) && text.length > 0) {
+            text = text.slice(0, -1);
+            self.text(text + '...');
+            textLength = self.node().getComputedTextLength();
+        }
+    } 
+}
+
 export class IndustryChart extends dc.RowChart {
     constructor(dataFilter, container) {
         super(container);
@@ -32,7 +46,7 @@ export class IndustryChart extends dc.RowChart {
                 .style("display", "none");
     }
 
-    _calculateAxisScale () {
+    _calculateAxisScale() {
         if (!this._x || this._elasticX) {
             const _extent = d3.extent(this._rowData, d => this.cappedValueAccessor(d));
             if (_extent[0] > 0) {
@@ -46,6 +60,29 @@ export class IndustryChart extends dc.RowChart {
                 .range([startX, this.effectiveWidth()]);
         }
         this._xAxis.scale(this._x);
+    }
+
+    _drawChart() {
+        super._drawChart();
+        const self = this;
+
+        this._tip = d3.tip().attr('class', 'tooltip').html(function(d) {
+            return `${d.key}: ${d.value}`; 
+        });
+        this.svg().call(this._tip);
+
+        this.selectAll("g .row")
+            .on("mouseover", function(ev, d, i, j) {
+                self._tip.show(d, this);
+            })
+            .on("mouseout", function(ev, d) {
+                self._tip.hide(d, this);
+            })
+
+        const wrap = wrapper(250);
+        this.selectAll('g .row text')
+            .text("")
+            .append('tspan').text(function(d) { return d.key; }).each(wrap);
     }
 
 }
