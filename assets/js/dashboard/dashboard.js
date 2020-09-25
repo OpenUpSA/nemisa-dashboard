@@ -39,9 +39,7 @@ d3.json('/api/responses/').then(function(data) {
     const bubbleFutureTech = new CustomBubbleChart($('.summary-block')[3], dataFilter);
     const bubblePerceivedRisks = new CustomBubbleChart($('.summary-block')[4], dataFilter);
     const bubbleAttitudes = new CustomBubbleChart($('.summary-block')[5], dataFilter);
-    const c3 = d3;
     const chartGender = new GenderPie(dataFilter, $('.demographics__grid .block .results-card__chart .chart-embed')[2])
-
 
 
     const chartAge = new AgeChart(dataFilter, $('.demographics__grid .block .results-card__chart .chart-embed')[1])
