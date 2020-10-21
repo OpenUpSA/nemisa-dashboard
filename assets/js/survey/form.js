@@ -4,14 +4,16 @@ import {sections} from './sections/sections'
 // import fetch from 'fetch'
 import fetch from 'isomorphic-fetch'
 import regeneratorRuntime from "regenerator-runtime";
+import {FormNav} from './form_nav';
 
 class Form {
     constructor() {
         this.prepareDOM();
     }
 
+
     prepareDOM() {
-        d3.select('.w-iframe').remove();
+        // d3.select('.w-iframe').remove();
         this.elSurvey = d3.select('.survey__wrap').node();
         this.tmplSection = d3.select('.survey__wrap > .block').node().cloneNode(true);
         d3.select(this.tmplSection).selectAll(".survey-block").remove();
@@ -19,16 +21,42 @@ class Form {
         const widgets = this.createWidgetFactories()
         d3.selectAll('.survey__wrap > .block').remove();
 
-        this.formSections = this.createFormSections(this.elSurvey, widgets);
+        this.formSections = this.createFormSections(widgets);
+        this.formNav = new FormNav(this.formSections.length)
+        this.formNav.addListener(this);
+
+        const container = this.elSurvey;
+        this.renderForm(0);
+    }
+
+    onBack(page) {
+        this.renderForm(page)
+    }
+
+
+    onForward(page) {
+        this.renderForm(page)
+    }
+
+    renderForm(page) {
+        const sections = this.formSections[page];
+        d3.select(this.elSurvey).selectAll('.block').remove()
+        d3.select(this.elSurvey).select('button').remove();
+
+        sections.forEach(section => {
+            this.elSurvey.appendChild(section.section.block);
+        })
+
         this.addButton();
     }
 
     addButton() {
         const self = this;
         d3.select('.survey__wrap').append('button').text('Submit form').on('click', function() {
-            console.log(self.submitSurvey());
+            self.submitSurvey();
         })
     }
+
 
     getResult() {
         const result = {}
@@ -55,27 +83,23 @@ class Form {
         return widgets;
     }
 
-    createFormSections(container, widgets) {
+    createFormSections(widgets) {
         const newSection = () => this.tmplSection.cloneNode(true);
 
-        this.formSections = [
-            {label: "general", section: new sections.general(newSection(), "General Information", widgets)},
-            {label: "digitalDeployment", section: new sections.digital_deployment(newSection(), "Digital Technology Deployment", widgets)},
-            {label: "digitalUsed", section: new sections.technology_used(newSection(), "Digital Technology Used", widgets)},
-            {label: "digitalFuture", section: new sections.future_technologies(newSection(), "Future Digital Technologies Needed", widgets)},
-            {label: "digitalSkills", section: new sections.skills_supply(newSection(), "Digital Skills Supply", widgets)},
-            {label: "digitalSupport", section: new sections.skills_support(newSection(), "Digital Skills Support", widgets)},
-            {label: "risk", section: new sections.perceived_risk(newSection(), "Risks", widgets)},
-            {label: "attitude", section: new sections.attitudes(newSection(), "Attitude", widgets)},
-            {label: "demographics", section: new sections.demographics(newSection(), "Demographics", widgets)}
+        const formSections = [
+            [
+                {label: "general", section: new sections.general(newSection(), "General Information", widgets)},
+                {label: "digitalDeployment", section: new sections.digital_deployment(newSection(), "Digital Technology Deployment", widgets)},
+            ],
+            [{label: "digitalUsed", section: new sections.technology_used(newSection(), "Digital Technology Used", widgets)}],
+            [{label: "digitalFuture", section: new sections.future_technologies(newSection(), "Future Digital Technologies Needed", widgets)}],
+            [{label: "digitalSkills", section: new sections.skills_supply(newSection(), "Digital Skills Supply", widgets)}],
+            [{label: "digitalSupport", section: new sections.skills_support(newSection(), "Digital Skills Support", widgets)}],
+            [{label: "risk", section: new sections.perceived_risk(newSection(), "Risks", widgets)}],
+            [{label: "attitude", section: new sections.attitudes(newSection(), "Attitude", widgets)}],
+            [{label: "demographics", section: new sections.demographics(newSection(), "Demographics", widgets)}]
         ]
-
-        this.formSections.forEach(section => {
-            container.appendChild(section.section.block);
-        })
-
-
-        return this.formSections;
+        return formSections;
 
     }
 

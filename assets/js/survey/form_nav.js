@@ -37,6 +37,8 @@ export class FormNav {
         this.firstPage = 0;
         this.lastPage = pages - 1;
         this.pagination = new Pagination(this.firstPage + 1, this.lastPage + 1);
+
+        this.listeners = [];
     }
 
     enableButton(button) {
@@ -53,6 +55,10 @@ export class FormNav {
 
     atEnd() {
         return this.currentPage >= this.lastPage;
+    }
+
+    addListener(listener) {
+        this.listeners.push(listener);
     }
 
     setButtons() {
@@ -74,6 +80,8 @@ export class FormNav {
         this.currentPage -= 1
         this.setButtons();
         this.pagination.back();
+
+        this.listeners.forEach(listener => listener.onBack(this.currentPage));
     }
 
     forward() {
@@ -83,6 +91,7 @@ export class FormNav {
         this.currentPage += 1
         this.setButtons();
         this.pagination.forward();
+        this.listeners.forEach(listener => listener.onForward(this.currentPage));
     }
 
     prepareDOM() {
