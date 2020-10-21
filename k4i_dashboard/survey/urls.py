@@ -20,8 +20,9 @@ urlpatterns = [
 
     path('survey.html', RedirectView.as_view(url='/survey/')),
     path('dashboard/survey.html', RedirectView.as_view(url='/survey/')),
-    path('survey/survey.html', RedirectView.as_view(url='/survey/')),
+    path('individual-survey.html', RedirectView.as_view(url='/survey/')),
     path('survey/', csrf_exempt(views.Survey.as_view())),
+    path('survey/individual-survey.html', RedirectView.as_view(url='/survey/')),
 
     path('dashboard.html', RedirectView.as_view(url='/dashboard/')),
     path('survey/dashboard.html', RedirectView.as_view(url='/dashboard/')),

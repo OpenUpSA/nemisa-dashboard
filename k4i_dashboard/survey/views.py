@@ -14,7 +14,7 @@ class Dashboard(generic.TemplateView):
     template_name = "survey/dashboard.html"
 
 class Survey(generic.TemplateView):
-    template_name = "survey/survey.html"
+    template_name = "survey/individual_survey.html"
 
 
 class SurveyResponseViewSet(viewsets.ModelViewSet):
