@@ -60,8 +60,10 @@ class Form {
 
     getResult() {
         const result = {}
-        this.formSections.forEach(el => {
-            result[el.label] = el.section.getResult()
+        this.formSections.forEach(section => {
+            section.forEach(subsection => {
+                result[subsection.label] = subsection.section.getResult()
+            })
         })
 
         return result;
