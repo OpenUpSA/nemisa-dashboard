@@ -14,8 +14,10 @@ class Form {
 
     prepareDOM() {
         // d3.select('.w-iframe').remove();
-        this.elSurvey = d3.select('.survey__wrap').node();
+        this.elSurvey = d3.select('.survey__wrap');
         this.tmplSection = d3.select('.survey__wrap > .block').node().cloneNode(true);
+        this.warningContainer = this.elSurvey.select('.form-warning');
+        this.tmplSection.appendChild(this.warningContainer.node());
         d3.select(this.tmplSection).selectAll(".survey-block").remove();
 
         const widgets = this.createWidgetFactories()
@@ -25,7 +27,6 @@ class Form {
         this.formNav = new FormNav(this.formSections.length)
         this.formNav.addListener(this);
 
-        const container = this.elSurvey;
         this.renderForm(0);
     }
 
@@ -40,11 +41,11 @@ class Form {
 
     renderForm(page) {
         const sections = this.formSections[page];
-        d3.select(this.elSurvey).selectAll('.block').remove()
-        d3.select(this.elSurvey).select('button').remove();
+        this.elSurvey.selectAll('.block').remove()
+        this.elSurvey.select('button').remove();
 
         sections.forEach(section => {
-            this.elSurvey.appendChild(section.section.block);
+            this.elSurvey.node().appendChild(section.section.node);
         })
 
         this.addButton();
