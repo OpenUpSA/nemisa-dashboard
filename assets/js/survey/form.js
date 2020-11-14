@@ -1,7 +1,6 @@
 import d3 from '../d3';
 import {widget_factories} from './widgets/factories'
 import {sections} from './sections/sections'
-// import fetch from 'fetch'
 import fetch from 'isomorphic-fetch'
 import regeneratorRuntime from "regenerator-runtime";
 import {FormNav} from './form_nav';
@@ -13,7 +12,6 @@ class Form {
 
 
     prepareDOM() {
-        // d3.select('.w-iframe').remove();
         this.elSurvey = d3.select('.survey__wrap');
         this.tmplSection = d3.select('.survey__wrap > .block').node().cloneNode(true);
         this.warningContainer = this.elSurvey.select('.form-warning');
@@ -135,7 +133,6 @@ function flattenObject(ob) {
                 if (!flatObject.hasOwnProperty(x)) continue;
 
                 toReturn[x] = flatObject[x];
-                // toReturn[i + '.' + x] = flatObject[x];
             }
         } else {
             toReturn[i] = ob[i];
