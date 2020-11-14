@@ -64,8 +64,13 @@ export class CustomBubbleChart extends dc.BaseMixin {
 
         this._nodes.forEach(node => {
             node.selected = Boolean(node.dimension.currentFilter())
-            node.count = node.group.all()[1].value
-            node.radius = node.group.all()[1].value
+            if (node.group.all()[1] != undefined) {
+                node.count = node.group.all()[1].value
+                node.radius = node.group.all()[1].value
+            } else {
+                console.log(node.group.all())
+            }
+                
         })
 
         return this._nodes;

@@ -1,5 +1,4 @@
-
-// import 'babel-polyfill';
+import 'babel-polyfill';
 import * as dc from 'dc';
 import crossfilter from 'crossfilter2';
 
@@ -16,44 +15,24 @@ import {AgeChart} from './age';
 import {IndustryChart} from './industry';
 import {FilterBar} from './filter_bar';
 
+import industryDashboard from './industry_dashboard';
+
+/*
+TODO
+Currently only the industry results is shown, need to:
+1. Create an API endpoint to download data
+2. Hook up the buttons so they toggle hide/show for the two results
+3. Write the code for the individual results results - should be similar to the industry-results results
+
+You'll need to figure when to download the results for both view, could do it on page load or when the user toggles.
+
+There are a few fixes that are needed for the individual view
+4. The clear button isn't working
+5. The industry barchart isn't showing nicely - have a look here to see what it should look like: https://k4i.openup.org.za/dashboard/
+ */
+$('.industry-results').show();
+$('.individual-results').hide();
+
 d3.json('/api/responses/').then(function(data) {
-    data = data.map(d => d.data);
-    const dataFilter = new Filter(data);
-
-    const widgetContainer = new WidgetContainer();
-    const filteredCount = new FilteredCount(dataFilter);
-    const screenElements = new ScreenElements(dataFilter);
-
-    const dimSkills = dataFilter.dimensions['mostUsedSkill'];
-    const dimLearntSkills = dataFilter.dimensions['learntSkills'];
-    const dimCurrentTech = dataFilter.dimensions['currentTech'];
-    const dimFutureTech = dataFilter.dimensions['futureTech'];
-    const dimPerceivedRisk = dataFilter.dimensions['perceivedRisk'];
-    const dimAttitudes = dataFilter.dimensions['attitudes'];
-
-    const bubbleUsedSkills = new CustomBubbleChart($('.summary-block')[0], dataFilter);
-
-
-    const bubbleLearntSkills = new CustomBubbleChart($('.summary-block')[1], dataFilter);
-    const bubbleCurrentTech = new CustomBubbleChart($('.summary-block')[2], dataFilter);
-    const bubbleFutureTech = new CustomBubbleChart($('.summary-block')[3], dataFilter);
-    const bubblePerceivedRisks = new CustomBubbleChart($('.summary-block')[4], dataFilter);
-    const bubbleAttitudes = new CustomBubbleChart($('.summary-block')[5], dataFilter);
-    const chartGender = new GenderPie(dataFilter, $('.demographics__grid .block .results-card__chart .chart-embed')[2])
-
-
-    const chartAge = new AgeChart(dataFilter, $('.demographics__grid .block .results-card__chart .chart-embed')[1])
-    const chartIndustry = new IndustryChart(dataFilter, $('.demographics__grid .block .results-card__chart .chart-embed')[0])
-    const filterBar = new FilterBar($('.chart-filters__inner')[0], dataFilter);
-
-    bubbleUsedSkills.dimensions(dimSkills);
-    bubbleLearntSkills.dimensions(dimLearntSkills);
-    bubbleFutureTech.dimensions(dimFutureTech);
-    bubblePerceivedRisks.dimensions(dimPerceivedRisk);
-    bubbleAttitudes.dimensions(dimAttitudes);
-    bubbleCurrentTech.dimensions(dimCurrentTech);
-
-    dc.renderAll();
-    return
-
+    industryDashboard(data)
 })

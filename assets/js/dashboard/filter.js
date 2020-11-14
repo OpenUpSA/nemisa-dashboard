@@ -50,7 +50,6 @@ function agreeDisagree(key) {
 
 export class Filter {
     constructor(data) {
-        this.data = data;
         this.crossfilter = crossfilter(data);
 
         const dim = foo => {

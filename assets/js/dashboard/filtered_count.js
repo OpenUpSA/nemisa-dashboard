@@ -1,26 +1,8 @@
-const labelClass = '.filtered-value';
+import * as dc from 'dc';
 
-export class FilteredCount {
-    constructor(dataFilter) {
-        this.dataFilter = dataFilter;
-        this.element = $(labelClass);
-        this.update();
-        
-    }
-
-    get total() {
-        return this.dataFilter.total();
-    }
-
-    get filteredCount() {
-        return this.dataFilter.count();
-    }
-
-    get label() {
-        return `${this.filteredCount}/${this.total}`;
-    }
-
-    update() {
-        this.element.text(this.label);
+export class FilteredCount extends dc.DataCount {
+    constructor(container, dataFilter) {
+        super(container)
+        this.crossfilter(dataFilter.crossfilter).groupAll(dataFilter.groupAll())
     }
 }
