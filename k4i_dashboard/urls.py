@@ -11,7 +11,7 @@ urlpatterns = [
     path("about.html",  TemplateView.as_view(template_name='about.html')),
     path("contact.html",  TemplateView.as_view(template_name='contact.html')),
     path("index.html",  TemplateView.as_view(template_name='index.html')),
-    path('industry-results.html', TemplateView.as_view(template_name="industry-results.html")),
+    path('survey-results.html', TemplateView.as_view(template_name="survey-results.html")),
 
 
     path("",  TemplateView.as_view(template_name='index.html')),
@@ -24,4 +24,3 @@ urlpatterns = [
     path('fonts/<path:path>', RedirectView.as_view(url='/static/fonts/%(path)s')),
     path('images/<path:path>', RedirectView.as_view(url='/static/images/%(path)s')),
 ]
-
