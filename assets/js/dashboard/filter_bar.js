@@ -79,10 +79,7 @@ export class FilterBar extends dc.BaseMixin {
         this.elDefault = $('.chart-filter--default', this._parent);
         this.elFilter = $('.chart-filter', this._parent)[2]
 
-        $('.chart-filter', this._parent)[1].remove();
-        $('.chart-filter', this._parent)[1].remove();
-
-        d3.select('.chart-filters__clear .button').on('click', ev => {
+        d3.selectAll('.chart-filters__clear .button').on('click', ev => {
             dc.chartRegistry.list().forEach(chart => {
                 this.removeAllFilters();
             })
