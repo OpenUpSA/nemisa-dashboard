@@ -18,8 +18,6 @@ import {FilterBar} from './filter_bar';
 // TODO: use $container as relevant below (`$container.find('some selector')`)
 export default function industryDashboard($container, data) {
 
-    data = data.map(d => d.data);
-
     const dataFilter = new Filter(data);
 
     const widgetContainer = new WidgetContainer();

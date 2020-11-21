@@ -1,76 +1,40 @@
-import * as dc from 'dc'
-import d3 from '../d3'
+import * as dc from 'dc';
+import $ from 'jquery';
+
+import FilterSelectOption from './filter_select_option';
 
 export class FilterSelect extends dc.SelectMenu {
   constructor(container, dimensionName, dataFilter) {
-      super(container)
-      this._$container = $(container)
-
-      this._dimension = dataFilter.dimensions[dimensionName].dimension
-      this._groups = this._dimension.group().all()
-      this.dimension(this._dimension)
-      this.group(this._dimension.group())
-      this._options = {}
-      this.render()
+    super(container);
+    this.$container = $(container);
+    this.dataFilterDimension = dataFilter.dimensions[dimensionName].dimension;
+    this.dimension(dimensionName);
+    this.group(this.dataFilterDimension.group());
+    this.render();
   }
 
   redraw() {
-    this.render()
+    this.render();
   }
 
   render() {
-    this._$container.empty();
-    this._groups.forEach(group => {
-      this._options[group.key] = new SelectOption(
-        group,
-        this._dimension,
-        this._filter.bind(this
-      ));
-      this._$container.append(this._options[group.key].render())
-    });
+    const filterSelectionOptions = this._group.all().map((group) => new FilterSelectOption(
+      group,
+      this.dataFilterDimension,
+      this._filter.bind(this),
+    ));
+    this.$container.empty();
+    filterSelectionOptions.forEach((option) => this.$container.append(option.render()));
   }
 
   _filter(key) {
-    this._$container
+    this.$container
       .parents('.dropdown-menu')
       .find('.dropdown-toggle')
       .children()
       .last()
-      .text(key)
-    this._dimension.filterExact(key)
-    this.redrawGroup()
-  }
-
-}
-
-// TODO: Do we keep classes in their own files? The below should move if so
-
-const $SELECT_TEMPLATE = $('.dropdown-list__active').first().clone()
-
-class SelectOption {
-  constructor(group, dimension, filter) {
-    this.group = group
-    this.dimension = dimension
-    this.filter = filter
-    this.$element = $SELECT_TEMPLATE.clone()
-    this.$element
-      .data('key', group.key)
-      .click(() => this.select(group.key))
-    this.$element.find('.dropdown-link__text').text(group.key)
-    this.$element.find('.dropdown-link').children().last().text(group.value)
-  }
-
-  select(key) {
-    this.filter(key)
-  }
-
-  render() {
-    this.update()
-    return this.$element
-  }
-
-  update() {
-    let selected = this.group.key === this.dimension.currentFilter()
-    this.$element.find('.dropdown-link__check').css('visibility', selected ? 'visible' : 'hidden')
+      .text(key);
+    this.dataFilterDimension.filterExact(key);
+    this.redrawGroup();
   }
 }

@@ -48,8 +48,8 @@ function show(dashboard) {
   $(`.${dashboard}-results`).show();
   if (!data[dashboard]) {
     d3.json(DASHBOARDS[dashboard].path).then((response) => {
-      data[dashboard] = response;
-      DASHBOARDS[dashboard].fn($container, response);
+      data[dashboard] = response.map((d) => d.data);
+      DASHBOARDS[dashboard].fn($container, data[dashboard]);
     });
   } else {
     DASHBOARDS[dashboard].fn($container, data[dashboard]);
