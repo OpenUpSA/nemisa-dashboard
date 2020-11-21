@@ -30,9 +30,40 @@ There are a few fixes that are needed for the individual view
 4. The clear button isn't working
 5. The industry barchart isn't showing nicely - have a look here to see what it should look like: https://k4i.openup.org.za/dashboard/
  */
-$('.industry-results').show();
-$('.individual-results').hide();
 
-d3.json('/api/responses/').then(function(data) {
-    industryDashboard(data)
-})
+const DASHBOARDS = {
+  industry: {
+    selector: '.industry-results',
+    fn: industryDashboard,
+    path: '/api/responses/'
+  }
+};
+
+let selected;
+let data = {};
+
+Object.keys(DASHBOARDS).forEach(dashboard => {
+  hide(dashboard);
+  $(`#${dashboard}-results`).click(() => show(dashboard));
+});
+
+show('industry');
+
+function show(dashboard) {
+  let $container = $(DASHBOARDS[dashboard].selector)
+  if (selected) hide(selected)
+  $(`.${dashboard}-results`).show();
+  if (!data[dashboard]){
+    d3.json(DASHBOARDS[dashboard].path).then(response => {
+      data[dashboard] = response;
+      DASHBOARDS[dashboard].fn($container, response);
+    });
+  } else {
+    DASHBOARDS[dashboard].fn($container, data[dashboard]);
+  }
+
+}
+
+function hide(dashboard) {
+  $(`.${dashboard}-results`).hide();
+}

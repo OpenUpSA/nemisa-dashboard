@@ -15,7 +15,9 @@ import {AgeChart} from './age';
 import {IndustryChart} from './industry';
 import {FilterBar} from './filter_bar';
 
-export default function industryDashboard(data) {
+// TODO: use $container as relevant below (`$container.find('some selector')`)
+export default function industryDashboard($container, data) {
+
     data = data.map(d => d.data);
 
     const dataFilter = new Filter(data);
