@@ -16,6 +16,7 @@ import {IndustryChart} from './industry';
 import {FilterBar} from './filter_bar';
 
 import industryDashboard from './industry_dashboard';
+import individualDashboard from './individual_dashboard';
 
 /*
 TODO
@@ -32,6 +33,11 @@ There are a few fixes that are needed for the individual view
  */
 
 const DASHBOARDS = {
+  individual: {
+    selector: '.individual-results',
+    fn: individualDashboard,
+    path: '/api/responses/'
+  },
   industry: {
     selector: '.industry-results',
     fn: industryDashboard,
@@ -47,7 +53,7 @@ Object.keys(DASHBOARDS).forEach(dashboard => {
   $(`#${dashboard}-results`).click(() => show(dashboard));
 });
 
-show('industry');
+show('individual');
 
 function show(dashboard) {
   let $container = $(DASHBOARDS[dashboard].selector)

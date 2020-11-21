@@ -1,7 +1,7 @@
 import crossfilter from 'crossfilter2';
 import {
     skillsExternalTraining,
-    mostUsedSkill, 
+    mostUsedSkill,
     skillsLearning,
     currentTech,
     futureTech,
@@ -51,6 +51,7 @@ function agreeDisagree(key) {
 export class Filter {
     constructor(data) {
         this.crossfilter = crossfilter(data);
+        debugger
 
         const dim = foo => {
             return this.crossfilter.dimension(el => foo(el))
@@ -65,6 +66,24 @@ export class Filter {
                 return 0;
             })},
             industry: {label: "Industry", dimension: this.crossfilter.dimension(el => el['Industry'])},
+            location: {
+              label: 'Location',
+              dimension: this.crossfilter.dimension(el => {
+                let city = el['live_city'] ||
+                  el['What City or Town do you live in?'] ||
+                  'N/A'
+                return city
+              })
+            },
+            educationLevel: {
+              label: 'Education Level',
+              dimension: this.crossfilter.dimension(el => {
+                let education = el['education_level'] ||
+                  el['What is your highest education level (Only indicate the highest)?'] ||
+                  'N/A'
+                return education
+              })
+            },
             mostUsedSkill: mostUsedSkill.map(skill => {
                 return ({
                     "label": skill.label,
