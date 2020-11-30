@@ -7,6 +7,8 @@ from . import views
 
 
 urlpatterns = [
+    path("", include("k4i_dashboard.survey.urls"),),
+
     path("admin/", admin.site.urls),
     path("about.html",  TemplateView.as_view(template_name='about.html')),
     path("contact.html",  TemplateView.as_view(template_name='contact.html')),
