@@ -1,9 +1,11 @@
 import d3 from '../d3';
 import {widget_factories} from './widgets/factories'
-import {sections} from './sections/sections'
+import {sections} from './industry_sections/sections'
 import fetch from 'isomorphic-fetch'
 import regeneratorRuntime from "regenerator-runtime";
 import {FormNav} from './form_nav';
+
+const URL = '/api/responses/?survey=1'
 
 class Form {
     constructor() {
@@ -108,7 +110,7 @@ class Form {
         let data = {data: this.getResult()};
         data = flattenObject(data)
         data = {data: data}
-        let response = await fetch('/api/responses/', {
+        let response = await fetch(URL, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json;charset=utf-8'
@@ -117,7 +119,7 @@ class Form {
         });
 
         let result = await response.json();
-        window.location.replace('industry-results.html');
+        window.location.replace('survey-results.html');
     }
 }
 
