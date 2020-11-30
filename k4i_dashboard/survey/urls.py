@@ -9,7 +9,11 @@ from django.shortcuts import redirect
 from django.views.generic.base import TemplateView, RedirectView
 
 router = routers.DefaultRouter()
-router.register(r'responses', views.SurveyResponseViewSet)
+router.register(r'surveys', views.SurveyViewSet)
+router.register(
+    r'responses',
+    views.SurveyResponseViewSet,
+    basename='SurveyResponse')
 
 urlpatterns = [
 
