@@ -34,5 +34,5 @@ def survey2():
     for record in records:
         __post(2, record)
 
-# survey1()
+survey1()
 survey2()
