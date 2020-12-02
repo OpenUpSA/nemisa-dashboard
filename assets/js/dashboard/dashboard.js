@@ -26,12 +26,12 @@ const DASHBOARDS = {
   individual: {
     selector: '.individual-results',
     fn: individualDashboard,
-    path: '/api/responses/',
+    path: '/api/responses/?survey=2',
   },
   industry: {
     selector: '.industry-results',
     fn: industryDashboard,
-    path: '/api/responses/',
+    path: '/api/responses/?survey=1',
   },
 };
 
