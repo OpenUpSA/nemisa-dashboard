@@ -5,7 +5,8 @@ import fetch from 'isomorphic-fetch'
 import regeneratorRuntime from 'regenerator-runtime';
 import {FormNav} from './form_nav';
 
-const URL = '/api/responses/?survey=2'
+const URL = '/api/responses/'
+const SURVEY = 2
 
 class Form {
   constructor() {
@@ -104,7 +105,7 @@ class Form {
   async submitSurvey() {
     let data = {data: this.getResult()};
     data = flattenObject(data)
-    data = {data: data}
+    data = { survey: SURVEY, data: data }
     let response = await fetch(URL, {
       method: 'POST',
       headers: {
@@ -119,25 +120,18 @@ class Form {
 }
 
 function flattenObject(ob) {
-  var toReturn = {};
-
-  for (var i in ob) {
-    if (!ob.hasOwnProperty(i)) continue;
-
-    if ((typeof ob[i]) == 'object' && ob[i] !== null) {
-      var flatObject = flattenObject(ob[i]);
-      for (var x in flatObject) {
-        if (!flatObject.hasOwnProperty(x)) continue;
-
-        toReturn[x] = flatObject[x];
-      }
+  let flat = {};
+  Object.keys(ob).forEach((key) => {
+    if (typeof ob[key] === 'string' || ob[key] instanceof Array) {
+      flat[key] = ob[key];
     } else {
-      toReturn[i] = ob[i];
+      flat = {
+        ...flat,
+        ...flattenObject(ob[key]),
+      };
     }
-  }
-  return toReturn;
+  });
+  return flat;
 }
-
-
 
 const form = new Form();
