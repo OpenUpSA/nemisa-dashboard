@@ -3,13 +3,13 @@
 from django.db import migrations, models
 import django.db.models.deletion
 
-def add_industry_survey(apps, schema_editor):
+def add_surveys(apps, schema_editor):
     Survey = apps.get_model('survey', 'Survey')
     db_alias = schema_editor.connection.alias
-    Survey.objects.using(db_alias).create(
-        description='Industry digital skills'
-    )
-
+    Survey.objects.using(db_alias).bulk_create([
+        Survey(description='Industry digital skills'),
+        Survey(description='individual digital skills')
+    ])
 
 class Migration(migrations.Migration):
 
@@ -25,7 +25,7 @@ class Migration(migrations.Migration):
                 ('description', models.TextField()),
             ],
         ),
-        migrations.RunPython(add_industry_survey),
+        migrations.RunPython(add_surveys),
         migrations.AddField(
             model_name='surveyresponse',
             name='survey',
