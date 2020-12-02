@@ -8,15 +8,15 @@ export class SectionBenefits extends Section {
 
   addWidgets() {
     const benefitOptions = [
-      { key: '_benefit_income', label: 'Improve/increase your income' },
-      { key: '_benefit_included_society', label: 'Feel more included in the society' },
-      { key: '_benefit_included_economy', label: 'Feel more included in the economy' },
-      { key: '_benefit_employment_find', label: 'Find employment' },
-      { key: '_benefit_employment_prepare', label: 'Prepare for employmeny' },
-      { key: '_benefit_increase_confidence', label: 'Increased confidence' },
-      { key: '_benefit_access_information', label: 'Access to information' },
-      { key: '_benefit_save_money', label: 'I save money e.g. transportation costs' },
-      { key: '_benefit_other', label: 'Other' },
+      { key: 'increase_income', label: 'Improve/increase your income' },
+      { key: 'feel_included_society', label: 'Feel more included in the society' },
+      { key: 'feel_included_economy', label: 'Feel more included in the economy' },
+      { key: 'find_employment', label: 'Find employment' },
+      { key: 'prepare_for_employment', label: 'Prepare for employmeny' },
+      { key: 'increase_confidence', label: 'Increased confidence' },
+      { key: 'access_information', label: 'Access to information' },
+      { key: 'save_money', label: 'I save money e.g. transportation costs' },
+      { key: 'other', label: 'Other' },
     ];
 
     this.widgets = [

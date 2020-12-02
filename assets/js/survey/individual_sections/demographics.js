@@ -8,74 +8,74 @@ export class SectionDemographics extends Section {
 
   addWidgets() {
     const genderOptions = [
-      { key: '_gender_female', label: 'Female' },
-      { key: '_gender_male', label: 'Male' },
-      { key: '_gender_trans', label: 'Transgender' },
-      { key: '_gender_other', label: 'Other' },
+      { key: 'male', label: 'Male' },
+      { key: 'female', label: 'Female' },
+      { key: 'trans', label: 'Transgender' },
+      { key: 'other', label: 'Other' },
     ];
 
     const provinceOptions = [
-      { key: '_province_ec', label: 'Eastern Cape' },
-      { key: '_province_fs', label: 'Free State' },
-      { key: '_province_gauteng', label: 'Gauteng' },
-      { key: '_province_kzn', label: 'KZN' },
-      { key: '_province_limpopo', label: 'Limpopo' },
-      { key: '_province_mpumalanga', label: 'Mpumalanga' },
-      { key: '_province_nw', label: 'North West' },
-      { key: '_province_nc', label: 'Northern Cape' },
-      { key: '_province_wc', label: 'Western Cape' },
+      { key: 'ec', label: 'Eastern Cape' },
+      { key: 'fs', label: 'Free State' },
+      { key: 'gauteng', label: 'Gauteng' },
+      { key: 'kzn', label: 'KZN' },
+      { key: 'limpopo', label: 'Limpopo' },
+      { key: 'mpumalanga', label: 'Mpumalanga' },
+      { key: 'nw', label: 'North West' },
+      { key: 'nc', label: 'Northern Cape' },
+      { key: 'wc', label: 'Western Cape' },
     ];
 
     const areaTypeOptions = [
-      { key: '_area_type_urban', label: 'Urban Area' },
-      { key: '_area_type_peri_urban', label: 'Peri-Urban Area' },
-      { key: '_area_type_rural', label: 'Rural Area' },
+      { key: 'urban', label: 'Urban Area' },
+      { key: 'peri_urban', label: 'Peri-Urban Area' },
+      { key: 'rural', label: 'Rural Area' },
     ];
 
     const eduOptions = [
-      { key: '_edu_pre', label: 'Pre-Matric / Pre-Grade 12 / Pre-Standard 10' },
-      { key: '_edu_matric', label: 'Matric / Grade 12 / Standard 10' },
-      { key: '_edu_certificate', label: 'Certificate' },
-      { key: '_edu_diploma', label: 'Diploma' },
-      { key: '_edu_degree', label: 'Undergraduate / Bachelors / BTech Degree' },
-      { key: '_edu_postgrad', label: 'Post Graduate Qualification' },
-      { key: '_edu_other', label: 'Other' },
+      { key: 'pre_matric', label: 'Pre-Matric / Pre-Grade 12 / Pre-Standard 10' },
+      { key: 'matric', label: 'Matric / Grade 12 / Standard 10' },
+      { key: 'certificate', label: 'Certificate' },
+      { key: 'diploma', label: 'Diploma' },
+      { key: 'degree', label: 'Undergraduate / Bachelors / BTech Degree' },
+      { key: 'postgrad', label: 'Post Graduate Qualification' },
+      { key: 'other', label: 'Other' },
     ];
 
     const employmentOptions = [
-      { key: '_employment_unable', label: 'Unable to work' },
-      { key: '_employment_unemployed', label: 'Unemployed' },
-      { key: '_employment_fulltime', label: 'Employed Full Time - Permmanent/Contract/Temp' },
-      { key: '_employment_parttime', label: 'Employed Part Time - Permmanent/Contract/Temp' },
-      { key: '_employment_self', label: 'Self-employed / Business owner' },
-      { key: '_employment_student', label: 'Student/Scholar' },
-      { key: '_employment_retired', label: 'Retired/Pensioner' },
-      { key: '_employment_other', label: 'Other' },
+      { key: 'unable', label: 'Unable to work' },
+      { key: 'unemployed', label: 'Unemployed' },
+      { key: 'fulltime', label: 'Employed Full Time - Permmanent/Contract/Temp' },
+      { key: 'parttime', label: 'Employed Part Time - Permmanent/Contract/Temp' },
+      { key: 'self', label: 'Self-employed / Business owner' },
+      { key: 'student', label: 'Student/Scholar' },
+      { key: 'retired', label: 'Retired/Pensioner' },
+      { key: 'other', label: 'Other' },
     ];
 
-    const mobileDataOptions = [
-      { key: '_mobile_data_0', label: '0' },
-      { key: '_mobile_data_1_50', label: 'R1-R50' },
-      { key: '_mobile_data_51_100', label: 'R51-R100' },
-      { key: '_mobile_data_101_150', label: 'R101-R150' },
-      { key: '_mobile_data_151_200', label: 'R151-R200' },
-      { key: '_mobile_data_200', label: '>R200' },
+    const mobileDataSpendOptions = [
+      { key: '0', label: '0' },
+      { key: '1-50', label: 'R1-R50' },
+      { key: '51-100', label: 'R51-R100' },
+      { key: '101-150', label: 'R101-R150' },
+      { key: '151-200', label: 'R151-R200' },
+      { key: '>200', label: '>R200' },
     ];
 
-    const participateOptions = [
-      { key: '_participate_no', label: 'No' },
-      { key: '_participate_yes', label: 'Yes' },
+    const noYesOptions = [
+      { key: 'no', label: 'No' },
+      { key: 'yes', label: 'Yes' },
     ];
 
     this.widgets = [
       { key: 'gender', widget: this.widgetFactories.select.newElement('What is your gender?', genderOptions) },
-      { key: 'yob', widget: this.widgetFactories.textbox.newElement('In what year were you born?') },
+      { key: 'year_of_birth', widget: this.widgetFactories.textbox.newElement('In what year were you born?') },
       { key: 'province', widget: this.widgetFactories.select.newElement('Province of residence in South Africa?', provinceOptions) },
       { key: 'area_type', widget: this.widgetFactories.select.newElement('Which of the following would you consider to be applicable to the area where you live?', areaTypeOptions) },
       { key: 'education_level', widget: this.widgetFactories.select.newElement('Highest education', eduOptions) },
       { key: 'employment_status', widget: this.widgetFactories.select.newElement('What is your current employment status', employmentOptions) },
-      { key: 'mobile_data', widget: this.widgetFactories.select.newElement('Estimate how much do you spend on mobile data per month', mobileDataOptions) },
-      { key: 'participate', widget: this.widgetFactories.select.newElement('May we contact you again in future e.g. to participate in other research studies?', participateOptions) },
+      { key: 'mobile_data_monthly_spend', widget: this.widgetFactories.select.newElement('Estimate how much do you spend on mobile data per month', mobileDataSpendOptions) },
+      { key: 'participate_future_consent', widget: this.widgetFactories.select.newElement('May we contact you again in future e.g. to participate in other research studies?', noYesOptions) },
     ];
 
     this.widgets.forEach((el) => {

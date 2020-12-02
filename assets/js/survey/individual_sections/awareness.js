@@ -8,16 +8,16 @@ export class SectionAwareness extends Section {
 
   addWidgets() {
     const internetUsageOptions = [
-      { key: '_internet_usage_entertainment', label: 'Entertainment' },
-      { key: '_internet_usage_search_jobs', label: 'Search for jobs' },
-      { key: '_internet_usage_search_information', label: 'Search for information' },
-      { key: '_internet_usage_search_business_op', label: 'Search for business opportunities' },
-      { key: '_internet_usage_training', label: 'To complete online training/courses' },
-      { key: '_internet_usage_social', label: 'To keep in touch with others' },
-      { key: '_internet_usage_banking', label: 'Online banking' },
-      { key: '_internet_usage_shopping', label: 'Online shopping' },
-      { key: '_internet_usage_bills', label: 'Paying bills' },
-      { key: '_internet_usage_other', label: 'Other' },
+      { key: 'entertainment', label: 'Entertainment' },
+      { key: 'search_jobs', label: 'Search for jobs' },
+      { key: 'search_information', label: 'Search for information' },
+      { key: 'search_business_op', label: 'Search for business opportunities' },
+      { key: 'training', label: 'To complete online training/courses' },
+      { key: 'keep_in_touch', label: 'To keep in touch with others' },
+      { key: 'banking', label: 'Online banking' },
+      { key: 'shopping', label: 'Online shopping' },
+      { key: 'paying_bills', label: 'Paying bills' },
+      { key: 'other', label: 'Other' },
     ];
 
     this.widgets = [
