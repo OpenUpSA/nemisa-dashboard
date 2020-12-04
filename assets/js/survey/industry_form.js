@@ -5,7 +5,8 @@ import fetch from 'isomorphic-fetch'
 import regeneratorRuntime from "regenerator-runtime";
 import {FormNav} from './form_nav';
 
-const URL = '/api/responses/?survey=1'
+const URL = '/api/responses/'
+const SURVEY = 1
 
 class Form {
     constructor() {
@@ -108,8 +109,8 @@ class Form {
 
     async submitSurvey() {
         let data = {data: this.getResult()};
-        data = flattenObject(data)
-        data = {data: data}
+        data = flattenObject(data);
+        data = { survey: SURVEY, data };
         let response = await fetch(URL, {
             method: 'POST',
             headers: {

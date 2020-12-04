@@ -54,7 +54,7 @@ export class SectionDemographics extends Section {
     ];
 
     const mobileDataSpendOptions = [
-      { key: '0', label: '0' },
+      { key: '0', label: 'R0' },
       { key: '1-50', label: 'R1-R50' },
       { key: '51-100', label: 'R51-R100' },
       { key: '101-150', label: 'R101-R150' },

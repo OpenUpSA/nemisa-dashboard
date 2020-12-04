@@ -40,7 +40,7 @@ class SelectBox {
 
     getResult() {
         if (this.currentValue)
-            return this.currentValue.key;
+            return this.currentValue.label;
         return '';
     }
 }

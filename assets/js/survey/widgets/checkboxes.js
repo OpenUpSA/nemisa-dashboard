@@ -39,8 +39,9 @@ class CheckBox {
   }
 
   getResult() {
-    const result = Object.keys(this.currentSelection)
-      .filter((key) => this.currentSelection[key] === true)
+    const result = this.options
+      .filter((option) => this.currentSelection[option.key] === true)
+      .map((option) => option.label)
     return result
   }
 }

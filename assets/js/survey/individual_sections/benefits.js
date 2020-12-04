@@ -12,7 +12,7 @@ export class SectionBenefits extends Section {
       { key: 'feel_included_society', label: 'Feel more included in the society' },
       { key: 'feel_included_economy', label: 'Feel more included in the economy' },
       { key: 'find_employment', label: 'Find employment' },
-      { key: 'prepare_for_employment', label: 'Prepare for employmeny' },
+      { key: 'prepare_for_employment', label: 'Prepare for employment' },
       { key: 'increase_confidence', label: 'Increased confidence' },
       { key: 'access_information', label: 'Access to information' },
       { key: 'save_money', label: 'I save money e.g. transportation costs' },

@@ -32,10 +32,10 @@ export class SectionDemographics extends Section {
         ]
 
         this.widgets = [
-            {key: 'Gender', widget: this.widgetFactories.select.newElement('Gender', gender_options)},
-            {key: 'Year of Birth', widget: this.widgetFactories.textbox.newElement('Year of birth')},
+            {key: 'gender', widget: this.widgetFactories.select.newElement('Gender', gender_options)},
+            {key: 'year_of_birth', widget: this.widgetFactories.textbox.newElement('Year of birth')},
             {key: 'education_level', widget: this.widgetFactories.select.newElement('What is your highest education level?', edu_options)},
-            {key: 'Race', widget: this.widgetFactories.select.newElement('Which racial group do you belong to?', race_options)},
+            {key: 'race', widget: this.widgetFactories.select.newElement('Which racial group do you belong to?', race_options)},
             {key: 'live_city', widget: this.widgetFactories.textbox.newElement('Which city or town do you live in?')}
         ]
 

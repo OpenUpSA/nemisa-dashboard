@@ -4,7 +4,7 @@ import $ from 'jquery';
 import d3 from '../d3';
 
 import industryDashboard from './industry_dashboard';
-import individualDashboard from './individual_dashboard';
+import individualDashboard from './individual/dashboard';
 
 /*
 TODO
