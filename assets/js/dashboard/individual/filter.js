@@ -59,7 +59,7 @@ export class Filter {
       },
       accessLocation: {
         label: 'Internet Access Location',
-        dimension: dim((el) => el.access_location)
+        dimension: multidim((el) => el.access_location)
       },
       internetUsage: {
         label: 'Internet Usage',
@@ -67,7 +67,7 @@ export class Filter {
       },
       benefits: {
         label: 'ICT/Internet Benefits',
-        dimension: dim((el) => el.benefits)
+        dimension: multidim((el) => el.benefits)
       },
       visitedGovWebsite: {
         label: 'Visited Government Website',
@@ -75,7 +75,7 @@ export class Filter {
       },
       servicesCompleted: {
         label: 'Government Web Services Completed',
-        dimension: dim((el) => el.services_completed)
+        dimension: multidim((el) => el.services_completed)
       },
       completionSuccess: {
         label: 'Services Successfully Completed',
