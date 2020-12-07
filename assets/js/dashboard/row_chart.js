@@ -37,4 +37,10 @@ export class RowChart extends dc.RowChart {
         self._tip.hide(d, this);
       });
   }
+
+  // Ugly workaround to avoid tooltop sticking
+  _onClick(d) {
+    this._tip.hide(d, this);
+    this.onClick(d);
+  }
 }

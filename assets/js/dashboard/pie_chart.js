@@ -43,4 +43,12 @@ export class PieChart extends dc.PieChart {
       .on('mouseover', function(ev, d) {self._tip.show(d, this);})
       .on('mouseout', function(ev, d) {self._tip.hide(d, this);});
   }
+
+  // Ugly workaround to avoid tooltop sticking
+  _onClick(d) {
+    this._tip.hide(d, this);
+    if (this._g.attr('class') !== this._emptyCssClass) {
+      this.onClick(d.data);
+    }
+  }
 }
