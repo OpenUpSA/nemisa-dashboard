@@ -9,12 +9,23 @@ export class RowChart extends dc.RowChart {
     this.currentDimension = dataFilter.dimensions[dimensionName].dimension;
     this.grouping = this.currentDimension.group().reduceCount();
     this.prepareDOM();
-    $(container).parents('.block-inner').find('h4')
-      .text(dataFilter.dimensions[dimensionName].label);
+    // $(container).parents('.block-inner').find('h4')
+    //   .text(dataFilter.dimensions[dimensionName].label);
+    const barHeight = 30;
     this
       .dimension(this.currentDimension)
       .group(this.grouping)
-      .elasticX(true);
+      .elasticX(true)
+      .height((element) => {
+        const rows = this.currentDimension.group().size();
+        const originalHeight = $(element).parents('.block-inner').height();
+        const newHeight = Math.max(
+          (barHeight + this.gap()) * rows + originalHeight - element.clientHeight,
+          originalHeight,
+        );
+        return newHeight;
+      })
+      .fixedBarHeight(barHeight);
     if (order) {
       this.ordering((d) => order.indexOf(d.key));
     }

@@ -14,7 +14,6 @@ import { FilterBar } from '../filter_bar';
 import { FilterSelect } from '../filter_select';
 
 export default function individualDashboard($container, data) {
-
   const dataFilter = new Filter(data);
 
   new WidgetContainer();
@@ -34,33 +33,74 @@ export default function individualDashboard($container, data) {
     'R51-R100',
     'R101-R150',
     'R151-R200',
-    '>R200'
+    '>R200',
   ];
   const charts = [
     {
-      Class: PieChart,
-      dimensionName: 'participateFutureConsent',
-      sortOrder: mobileDataMonthlySpendOrder
+      Class: RowChart,
+      dimensionName: 'mobileDataMonthlySpend',
+      sortOrder: mobileDataMonthlySpendOrder,
+      icon: 'mobile-alt',
     },
     {
-      Class: RowChart,
-      dimensionName: 'mobileDataMonthlySpend'
+      Class: PieChart,
+      dimensionName: 'participateFutureConsent',
+      icon: 'clipboard-check',
     },
     {
       Class: PieChart,
       dimensionName: 'accessHome',
+      icon: 'house-user',
     },
     {
       Class: PieChart,
       dimensionName: 'accessFree',
+      icon: 'wifi',
+    },
+    {
+      Class: RowChart,
+      dimensionName: 'accessLocation',
+      icon: 'glasses',
     },
     {
       Class: RowChart,
       dimensionName: 'internetUsage',
+      icon: 'chart-bar',
+    },
+    {
+      Class: RowChart,
+      dimensionName: 'benefits',
+      icon: 'glasses',
+    },
+    {
+      Class: PieChart,
+      dimensionName: 'visitedGovWebsite',
+      icon: 'glasses',
+    },
+    {
+      Class: RowChart,
+      dimensionName: 'servicesCompleted',
+      icon: 'glasses',
+    },
+    {
+      Class: RowChart,
+      dimensionName: 'completionSuccess',
+      icon: 'glasses',
     },
     {
       Class: RowChart,
       dimensionName: 'howOftenOfficialsRespond',
+      icon: 'comments',
+    },
+    {
+      Class: PieChart,
+      dimensionName: 'trustGovWebApp',
+      icon: 'glasses',
+    },
+    {
+      Class: PieChart,
+      dimensionName: 'homeLang',
+      icon: 'glasses',
     },
   ];
 
