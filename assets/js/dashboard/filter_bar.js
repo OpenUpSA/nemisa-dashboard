@@ -11,6 +11,7 @@ export class FilterBar extends dc.BaseMixin {
     this.$default = $(parent).find('.chart-filter--default');
     this.$clear = $(parent).find('.chart-filters__clear');
     this._filters = {};
+    $(this._parent).find('.chart-filters__inner').find('.chart-filter:not(.chart-filter--default)').remove();
     dc.registerChart(this, group);
   }
 

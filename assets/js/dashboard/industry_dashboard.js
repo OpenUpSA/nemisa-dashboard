@@ -44,7 +44,7 @@ export default function industryDashboard($container, data) {
     const chartAge = new AgeChart(dataFilter, $('.demographics__grid .block .results-card__chart .chart-embed')[1])
     const chartIndustry = new IndustryChart(dataFilter, $('.demographics__grid .block .results-card__chart .chart-embed')[0])
 
-    const filterBarContainer = $('.chart-filters__inner')[1];
+    const filterBarContainer = $container.find('.chart-filters__wrap')[0];
     $(filterBarContainer).show()
     const filterBar = new FilterBar(filterBarContainer, dataFilter);
 
