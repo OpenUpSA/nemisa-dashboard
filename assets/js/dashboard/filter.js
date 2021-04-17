@@ -64,7 +64,7 @@ export class Filter {
                     return 2020 - yob
                 return 0;
             })},
-            industry: {label: "Industry", dimension: this.crossfilter.dimension(el => el['industry'])},
+            industry: {label: "Industry", dimension: this.crossfilter.dimension(el => el['Industry'])},
             province: {
               label: 'Province',
               dimension: this.crossfilter.dimension(el => {
