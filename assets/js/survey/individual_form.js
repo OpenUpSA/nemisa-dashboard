@@ -54,7 +54,7 @@ class Form {
 
   addButton() {
     const self = this;
-    d3.select('.survey__wrap').append('button').text('Submit form').on('click', function() {
+    d3.select('#survey-submit').on('click', function() {
       self.submitSurvey();
     })
   }
@@ -122,7 +122,7 @@ class Form {
 function flattenObject(ob) {
   let flat = {};
   Object.keys(ob).forEach((key) => {
-    if (typeof ob[key] === 'string' || ob[key] instanceof Array) {
+    if (typeof ob[key] === 'string' || typeof ob[key] === 'number' || ob[key] instanceof Array) {
       flat[key] = ob[key];
     } else {
       flat = {

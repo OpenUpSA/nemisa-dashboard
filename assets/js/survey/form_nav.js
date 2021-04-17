@@ -67,10 +67,13 @@ export class FormNav {
         else
             this.enableButton(this.prevButton);
 
-        if (this.atEnd())
-            this.disableButton(this.nextButton);
-        else
-            this.enableButton(this.nextButton);
+        if (this.atEnd()) {
+          this.disableButton(this.nextButton);
+          this.submitButton.classed('hidden', false);
+        } else {
+          this.enableButton(this.nextButton);
+          this.submitButton.classed('hidden', true);
+        }
     }
 
     back() {
@@ -99,9 +102,9 @@ export class FormNav {
         const self = this;
         this.prevButton = d3.selectAll("#survey-prev")
         this.nextButton = d3.selectAll("#survey-next")
+        this.submitButton = d3.selectAll("#survey-submit")
 
         this.prevButton.on('click', () => this.back());
         this.nextButton.on('click', () => this.forward());
     }
 }
-

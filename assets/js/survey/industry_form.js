@@ -53,10 +53,10 @@ class Form {
     }
 
     addButton() {
-        const self = this;
-        d3.select('.survey__wrap').append('button').text('Submit form').on('click', function() {
-            self.submitSurvey();
-        })
+      const self = this;
+      d3.select('#survey-submit').on('click', function() {
+        self.submitSurvey();
+      })
     }
 
 
