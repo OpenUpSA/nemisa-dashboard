@@ -8,7 +8,7 @@ import { ScreenElements } from '../screen_elements';
 import { Filter } from './filter';
 import { RowChart } from '../row_chart';
 import { PieChart } from '../pie_chart';
-import { Charts } from '../charts'
+import { Charts } from '../charts';
 
 import { FilterBar } from '../filter_bar';
 import { FilterSelect } from '../filter_select';

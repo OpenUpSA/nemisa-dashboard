@@ -51,7 +51,6 @@ function agreeDisagree(key) {
 export class Filter {
     constructor(data) {
         this.crossfilter = crossfilter(data);
-        debugger
 
         const dim = foo => {
             return this.crossfilter.dimension(el => foo(el))
