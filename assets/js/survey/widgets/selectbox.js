@@ -30,8 +30,8 @@ class SelectBox {
             .append(function(d) {
                 const newOption = d3
                     .select(tmplOption.cloneNode(true))
-                    .attr('value', d.key)
-                    .text(d.label)
+                    .attr('value', d.key || d)
+                    .text(d.label || d)
 
                 return newOption.nodes()[0];
 
@@ -40,7 +40,7 @@ class SelectBox {
 
     getResult() {
         if (this.currentValue)
-            return this.currentValue.label;
+            return this.currentValue.label || this.currentValue;
         return '';
     }
 }

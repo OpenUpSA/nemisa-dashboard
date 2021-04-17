@@ -67,9 +67,11 @@ export class SectionDemographics extends Section {
       { key: 'yes', label: 'Yes' },
     ];
 
+    const yearOptions = new Array(100).fill(null).map((_, i) => new Date().getFullYear() - i);
+
     this.widgets = [
       { key: 'gender', widget: this.widgetFactories.select.newElement('What is your gender?', genderOptions) },
-      { key: 'year_of_birth', widget: this.widgetFactories.textbox.newElement('In what year were you born?') },
+      { key: 'year_of_birth', widget: this.widgetFactories.select.newElement('In what year were you born?', yearOptions) },
       { key: 'province', widget: this.widgetFactories.select.newElement('Province of residence in South Africa?', provinceOptions) },
       { key: 'area_type', widget: this.widgetFactories.select.newElement('Which of the following would you consider to be applicable to the area where you live?', areaTypeOptions) },
       { key: 'education_level', widget: this.widgetFactories.select.newElement('Highest education', eduOptions) },
