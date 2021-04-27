@@ -68,10 +68,11 @@ export class FormNav {
             this.enableButton(this.prevButton);
 
         if (this.atEnd()) {
-          this.disableButton(this.nextButton);
+          this.nextButton.classed('hidden', true);
           this.submitButton.classed('hidden', false);
         } else {
           this.enableButton(this.nextButton);
+          this.nextButton.classed('hidden', false);
           this.submitButton.classed('hidden', true);
         }
     }
