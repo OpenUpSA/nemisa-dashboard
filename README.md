@@ -4,6 +4,14 @@
 K4I Dashboard
 ===============================
 
+TODO:
+
+- [x] survey year dropdown
+- [x] submit form button is strange
+- [x] industry form: selected filters not working
+- [ ] industry form: check why bottom chart different to https://k4i.openup.org.za/dashboard/
+
+
 
 Complete project setup
 ----------------------
