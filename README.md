@@ -6,6 +6,7 @@ K4I Dashboard
 
 TODO:
 
+- [ ] Document deployment (git remote add dokku dokku@hetzner1.openup.org.za:k4i...git push dokku master)
 - [x] survey year dropdown
 - [x] submit form button is strange
 - [x] industry form: selected filters not working
