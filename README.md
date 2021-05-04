@@ -4,15 +4,15 @@
 K4I Dashboard
 ===============================
 
-TODO:
+## TODO
 
-- [ ] Document deployment (git remote add dokku dokku@hetzner1.openup.org.za:k4i...git push dokku master)
+- [ ] Discuss which parts of the template this README.md was copied from are still relevant, and update accordingly.
+- [ ] Document deployment (`git remote add dokku dokku@hetzner1.openup.org.za:k4i.` ... `git push dokku master`)
+- [ ] Document running DB migration scripts as needed (`ansible hetzner1.openup.org.za -a 'dokku run k4i python manage.py migrate'`)
 - [x] survey year dropdown
 - [x] submit form button is strange
 - [x] industry form: selected filters not working
 - [ ] industry form: check why bottom chart different to https://k4i.openup.org.za/dashboard/
-
-
 
 Complete project setup
 ----------------------
