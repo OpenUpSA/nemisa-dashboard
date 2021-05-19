@@ -17,7 +17,7 @@ router.register(
 
 urlpatterns = [
 
-    path('individual-survey.html', csrf_exempt(TemplateView.as_view(template_name="survey/individual_survey.html"))),
+    path('individual-survey.html', csrf_exempt(TemplateView.as_view(template_name="survey/individual-survey.html"))),
 
     # TODO
     # This file needs to be implemented in the same way as the individual-survey.html
