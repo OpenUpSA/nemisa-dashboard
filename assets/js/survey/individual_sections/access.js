@@ -25,7 +25,7 @@ export class SectionAccess extends Section {
     this.widgets = [
       { key: 'access_home', widget: this.widgetFactories.select.newElement('Do you have access to the internet at home?', noYesOptions) },
       { key: 'access_free', widget: this.widgetFactories.select.newElement('Do you have access to free internet?', noYesOptions) },
-      { key: 'access_location', widget: this.widgetFactories.select.newElement('If you said "yes" above, then indicate where you obtain free access?', internetAccessLocationOptions) },
+      { key: 'access_location', widget: this.widgetFactories.checkboxes.newElement('If you said "yes" above, then indicate where you obtain free access?', internetAccessLocationOptions) },
     ];
 
     this.widgets.forEach((el) => {
