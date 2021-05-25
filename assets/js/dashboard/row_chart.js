@@ -37,6 +37,7 @@ export class RowChart extends dc.RowChart {
 
   _drawChart() {
     const self = this;
+    this.label((d) => (d.key.length > 38 ? `${d.key.slice(0, 35)}...` : d.key));
     super._drawChart();
     this._tip = d3.tip().attr('class', 'tooltip').html((d) => `${d.key}: ${d.value}`);
     this.svg().call(this._tip);
