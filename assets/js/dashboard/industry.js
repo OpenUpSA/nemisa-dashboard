@@ -12,7 +12,7 @@ function wrapper(width, padding = 10) {
             self.text(text + '...');
             textLength = self.node().getComputedTextLength();
         }
-    } 
+    }
 }
 
 export class IndustryChart extends dc.RowChart {
@@ -55,7 +55,7 @@ export class IndustryChart extends dc.RowChart {
             if (_extent[1] < 0) {
                 _extent[1] = 0;
             }
-            const startX = 230;
+            const startX = 0;
             this._x = d3.scaleLinear().domain(_extent)
                 .range([startX, this.effectiveWidth()]);
         }
@@ -67,7 +67,7 @@ export class IndustryChart extends dc.RowChart {
         const self = this;
 
         this._tip = d3.tip().attr('class', 'tooltip').html(function(d) {
-            return `${d.key}: ${d.value}`; 
+            return `${d.key}: ${d.value}`;
         });
         this.svg().call(this._tip);
 

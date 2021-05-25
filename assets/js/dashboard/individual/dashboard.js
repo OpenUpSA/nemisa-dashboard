@@ -50,7 +50,7 @@ export default function individualDashboard($container, data) {
     {
       Class: PieChart,
       dimensionName: 'accessHome',
-      icon: 'house-user',
+      icon: 'home',
     },
     {
       Class: PieChart,
@@ -104,7 +104,7 @@ export default function individualDashboard($container, data) {
     },
   ];
 
-  new Charts($container.find('.grid:eq(1)'), dataFilter, charts);
+  new Charts($container.find('.demographics-wrapper'), dataFilter, charts);
 
   const filterBarContainer = $container.find('.chart-filters__wrap')[0];
   $(filterBarContainer).show();
