@@ -13,6 +13,7 @@ import {Filter} from './filter';
 import {GenderPie} from './gender';
 import {AgeChart} from './age';
 import {IndustryChart} from './industry';
+import { RowChart } from './row_chart';
 import {FilterBar} from './filter_bar';
 
 // TODO: use $container as relevant below (`$container.find('some selector')`)
@@ -42,8 +43,9 @@ export default function industryDashboard($container, data) {
     const chartGender = new GenderPie(dataFilter, $('.demographics__grid .block .results-card__chart .chart-embed')[2])
 
     const chartAge = new AgeChart(dataFilter, $('.demographics__grid .block .results-card__chart .chart-embed')[1])
-    const chartIndustry = new IndustryChart(dataFilter, $('.demographics__grid .block .results-card__chart .chart-embed')[0])
+    // const chartIndustry = new IndustryChart(dataFilter, $('.demographics__grid .block .results-card__chart .chart-embed')[0])
 
+    new RowChart($('.demographics__grid .block .results-card__chart .chart-embed')[0], 'industry', dataFilter);
     const filterBarContainer = $container.find('.chart-filters__wrap')[0];
     $(filterBarContainer).show()
     const filterBar = new FilterBar(filterBarContainer, dataFilter);
