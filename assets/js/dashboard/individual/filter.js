@@ -4,9 +4,10 @@ export class Filter {
   constructor(data) {
     this.crossfilter = crossfilter(data);
 
-    const dim = (foo) => {
-      return this.crossfilter.dimension((el) => foo(el))
-    };
+    const dim = (foo) => this.crossfilter.dimension((el) => {
+      const value = foo(el);
+      return value === '_null' ? 'No response' : value;
+    });
 
     const multidim = (foo) => {
       return this.crossfilter.dimension((el) => foo(el), true)
