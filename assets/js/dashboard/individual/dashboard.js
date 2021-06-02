@@ -6,6 +6,7 @@ import { WidgetContainer } from '../widgets';
 import { FilteredCount } from '../filtered_count';
 import { ScreenElements } from '../screen_elements';
 import { Filter } from './filter';
+import { AgeChart } from '../age-chart';
 import { RowChart } from '../row_chart';
 import { PieChart } from '../pie_chart';
 import { Charts } from '../charts';
@@ -21,7 +22,6 @@ export default function individualDashboard($container, data) {
   new ScreenElements(dataFilter);
 
   new FilterSelect($container.find('.filter--1 .dropdown-list__inner')[0], 'gender', dataFilter);
-  new FilterSelect($container.find('.filter--2 .dropdown-list__inner')[0], 'age', dataFilter);
   new FilterSelect($container.find('.filter--3 .dropdown-list__inner')[0], 'province', dataFilter);
   new FilterSelect($container.find('.filter--4 .dropdown-list__inner')[0], 'areaType', dataFilter);
   new FilterSelect($container.find('.filter--5 .dropdown-list__inner')[0], 'educationLevel', dataFilter);
@@ -36,6 +36,10 @@ export default function individualDashboard($container, data) {
     '>R200',
   ];
   const charts = [
+    {
+      Class: AgeChart,
+      dimensionName: 'age',
+    },
     {
       Class: RowChart,
       dimensionName: 'mobileDataMonthlySpend',

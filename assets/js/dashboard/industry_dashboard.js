@@ -11,7 +11,7 @@ import {ScreenElements} from './screen_elements';
 import {CustomBubbleChart} from './custom_bubble_chart';
 import {Filter} from './filter';
 import {GenderPie} from './gender';
-import {AgeChart} from './age';
+import {AgeChart} from './age-chart';
 import {IndustryChart} from './industry';
 import { RowChart } from './row_chart';
 import {FilterBar} from './filter_bar';
@@ -42,7 +42,7 @@ export default function industryDashboard($container, data) {
     const bubbleAttitudes = new CustomBubbleChart($('.summary-block')[5], dataFilter);
     const chartGender = new GenderPie(dataFilter, $('.demographics__grid .block .results-card__chart .chart-embed')[2])
 
-    const chartAge = new AgeChart(dataFilter, $('.demographics__grid .block .results-card__chart .chart-embed')[1])
+    const chartAge = new AgeChart($('.demographics__grid .block .results-card__chart .chart-embed')[1], 'age', dataFilter)
     // const chartIndustry = new IndustryChart(dataFilter, $('.demographics__grid .block .results-card__chart .chart-embed')[0])
 
     new RowChart($('.demographics__grid .block .results-card__chart .chart-embed')[0], 'industry', dataFilter);
