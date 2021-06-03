@@ -3628,6 +3628,10 @@ label {
   justify-content: space-between;
 }
 
+.instruction {
+  margin-top: 1em;
+}
+
 @media screen and (max-width: 991px) {
   h1 {
     font-size: 1.8em;
@@ -6683,17 +6687,6 @@ label {
   }
 
   #w-node-e675b4eb-2321-8b41-ebff-0bd2d405d643-ee3cca63 {
-    -ms-grid-row: span 1;
-    grid-row-start: span 1;
-    -ms-grid-row-span: 1;
-    grid-row-end: span 1;
-    -ms-grid-column: span 1;
-    grid-column-start: span 1;
-    -ms-grid-column-span: 1;
-    grid-column-end: span 1;
-  }
-
-  #w-node-e675b4eb-2321-8b41-ebff-0bd2d405d652-ee3cca63 {
     -ms-grid-row: span 1;
     grid-row-start: span 1;
     -ms-grid-row-span: 1;
