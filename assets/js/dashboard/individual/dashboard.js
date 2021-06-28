@@ -39,6 +39,7 @@ export default function individualDashboard($container, data) {
     {
       Class: AgeChart,
       dimensionName: 'age',
+      icon: 'calendar',
     },
     {
       Class: RowChart,
