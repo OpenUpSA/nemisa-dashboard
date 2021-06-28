@@ -69,7 +69,7 @@ export default function individualDashboard($container, data) {
     {
       Class: RowChart,
       dimensionName: 'internetUsage',
-      icon: 'calendar',
+      icon: 'chart-bar',
     },
     {
       Class: RowChart,
