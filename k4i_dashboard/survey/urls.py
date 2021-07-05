@@ -9,11 +9,15 @@ from django.shortcuts import redirect
 from django.views.generic.base import TemplateView, RedirectView
 
 router = routers.DefaultRouter()
-router.register(r'responses', views.SurveyResponseViewSet)
+router.register(r'surveys', views.SurveyViewSet)
+router.register(
+    r'responses',
+    views.SurveyResponseViewSet,
+    basename='SurveyResponse')
 
 urlpatterns = [
 
-    path('individual-survey.html', csrf_exempt(TemplateView.as_view(template_name="survey/individual_survey.html"))),
+    path('individual-survey.html', csrf_exempt(TemplateView.as_view(template_name="survey/individual-survey.html"))),
 
     # TODO
     # This file needs to be implemented in the same way as the individual-survey.html

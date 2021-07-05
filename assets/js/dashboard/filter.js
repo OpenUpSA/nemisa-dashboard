@@ -1,7 +1,7 @@
 import crossfilter from 'crossfilter2';
 import {
     skillsExternalTraining,
-    mostUsedSkill, 
+    mostUsedSkill,
     skillsLearning,
     currentTech,
     futureTech,
@@ -57,14 +57,42 @@ export class Filter {
         }
 
         this.dimensions = {
-            gender: {label: "Gender", dimension: this.crossfilter.dimension(el => el["Gender"])},
+            gender: {label: "Gender", dimension: this.crossfilter.dimension(el => el["gender"])},
             age: {label: "Age", dimension: this.crossfilter.dimension(el => {
-                const yob = parseInt(el["Year of Birth"])
+                const yob = parseInt(el["year_of_birth"])
                 if (yob)
                     return 2020 - yob
                 return 0;
             })},
             industry: {label: "Industry", dimension: this.crossfilter.dimension(el => el['Industry'])},
+            province: {
+              label: 'Province',
+              dimension: this.crossfilter.dimension(el => {
+                let province = el['province'] || 'N/A'
+                return province
+              })
+            },
+            areaType: {
+              label: 'Area Type',
+              dimension: this.crossfilter.dimension(el => {
+                let areaType = el['area_type'] || 'N/A'
+                return areaType
+              })
+            },
+            educationLevel: {
+              label: 'Education Level',
+              dimension: this.crossfilter.dimension(el => {
+                let education = el['education_level'] || 'N/A'
+                return education
+              })
+            },
+            employmentStatus: {
+              label: 'Employment Status',
+              dimension: this.crossfilter.dimension(el => {
+                let employment = el['employment_status'] || 'N/A'
+                return employment
+              })
+            },
             mostUsedSkill: mostUsedSkill.map(skill => {
                 return ({
                     "label": skill.label,

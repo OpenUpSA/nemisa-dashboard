@@ -12,9 +12,9 @@ export class SectionGeneral extends Section {
         const self = this;
 
         this.widgets = [
-            {key: 'Full Name', widget: this.widgetFactories.textbox.newElement('Full Name')},
-            {key: 'Email', widget: this.widgetFactories.textbox.newElement('Email')},
-            {key: 'Industry', widget: this.widgetFactories.select.newElement('Industry', industries)}
+            {key: 'full_name', widget: this.widgetFactories.textbox.newElement('Full Name')},
+            {key: 'email', widget: this.widgetFactories.textbox.newElement('Email')},
+            {key: 'industry', widget: this.widgetFactories.select.newElement('Industry', industries)}
         ]
 
         this.widgets.forEach(el => {

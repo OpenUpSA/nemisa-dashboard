@@ -6,8 +6,38 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "dev": "parcel watch assets/scss/k4i_dashboard.scss assets/css/*.css assets/fonts/* assets/images/* assets/js/dashboard/dashboard.js assets/js/survey/form.js assets/js/webflow.js --out-dir assets/bundles",
-    "build": "parcel build assets/scss/k4i_dashboard.scss assets/css/*.css assets/fonts/* assets/images/* assets/js/dashboard/dashboard.js assets/js/survey/form.js assets/js/webflow.js --out-dir assets/bundles --no-content-hash"
+    "dev": "parcel watch assets/scss/k4i_dashboard.scss assets/css/*.css assets/fonts/* assets/images/* assets/js/dashboard/dashboard.js assets/js/survey/individual_form.js assets/js/survey/industry_form.js assets/js/webflow.js --out-dir assets/bundles",
+    "build": "parcel build assets/scss/k4i_dashboard.scss assets/css/*.css assets/fonts/* assets/images/* assets/js/dashboard/dashboard.js assets/js/survey/individual_form.js assets/js/survey/industry_form.js assets/js/webflow.js --out-dir assets/bundles --no-content-hash",
+    "webflow-import": "npx import-webflow webflow-export.zip",
+    "lint": "eslint assets/js/ --ext js"
+  },
+  "importWebflowExport": {
+    "copyTrees": {
+      "css": "assets/css",
+      "js": "assets/js",
+      "images": "assets/images"
+    },
+    "importHtml": [
+      {
+        "glob": "*[!survey].html",
+        "destDir": "k4i_dashboard/templates"
+      },
+      {
+        "glob": "survey-results.html",
+        "destDir": "k4i_dashboard/templates",
+        "transforms": "./assets/js/webflow-transform.js"
+      },
+      {
+        "glob": "individual-survey.html",
+        "destDir": "k4i_dashboard/survey/templates/survey",
+        "transforms": "./assets/js/webflow-transform.js"
+      },
+      {
+        "glob": "industry-digital-skills-survey.html",
+        "destDir": "k4i_dashboard/survey/templates/survey",
+        "transforms": "./assets/js/webflow-transform.js"
+      }
+    ]
   },
   "dependencies": {
     "babel-polyfill": "^6.26.0",
@@ -26,6 +56,7 @@
     "dc": "^4.1.1",
     "fetch": "^1.1.0",
     "isomorphic-fetch": "^2.2.1",
+    "jquery": "^3.5.1",
     "parcel-bundler": "^1.12.4",
     "sass": "^1.25.1-test.1",
     "shx": "^0.3.2"
@@ -35,6 +66,10 @@
     "@babel/preset-env": "^7.12.1",
     "babel-core": "^6.26.3",
     "babel-plugin-transform-regenerator": "^6.26.0",
-    "babel-preset-env": "^1.7.0"
+    "babel-preset-env": "^1.7.0",
+    "eslint": "7.2.0",
+    "eslint-config-airbnb-base": "14.2.1",
+    "eslint-plugin-import": "^2.22.1",
+    "import-webflow-export": "0.0.4"
   }
 }

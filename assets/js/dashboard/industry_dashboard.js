@@ -11,12 +11,13 @@ import {ScreenElements} from './screen_elements';
 import {CustomBubbleChart} from './custom_bubble_chart';
 import {Filter} from './filter';
 import {GenderPie} from './gender';
-import {AgeChart} from './age';
+import {AgeChart} from './age-chart';
 import {IndustryChart} from './industry';
+import { RowChart } from './row_chart';
 import {FilterBar} from './filter_bar';
 
-export default function industryDashboard(data) {
-    data = data.map(d => d.data);
+// TODO: use $container as relevant below (`$container.find('some selector')`)
+export default function industryDashboard($container, data) {
 
     const dataFilter = new Filter(data);
 
@@ -41,10 +42,11 @@ export default function industryDashboard(data) {
     const bubbleAttitudes = new CustomBubbleChart($('.summary-block')[5], dataFilter);
     const chartGender = new GenderPie(dataFilter, $('.demographics__grid .block .results-card__chart .chart-embed')[2])
 
-    const chartAge = new AgeChart(dataFilter, $('.demographics__grid .block .results-card__chart .chart-embed')[1])
-    const chartIndustry = new IndustryChart(dataFilter, $('.demographics__grid .block .results-card__chart .chart-embed')[0])
+    const chartAge = new AgeChart($('.demographics__grid .block .results-card__chart .chart-embed')[1], 'age', dataFilter)
+    // const chartIndustry = new IndustryChart(dataFilter, $('.demographics__grid .block .results-card__chart .chart-embed')[0])
 
-    const filterBarContainer = $('.chart-filters__inner')[1];
+    new RowChart($('.demographics__grid .block .results-card__chart .chart-embed')[0], 'industry', dataFilter);
+    const filterBarContainer = $container.find('.chart-filters__wrap')[0];
     $(filterBarContainer).show()
     const filterBar = new FilterBar(filterBarContainer, dataFilter);
 

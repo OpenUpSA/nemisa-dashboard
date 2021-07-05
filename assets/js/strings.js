@@ -41,7 +41,7 @@ export const currentTech = [
     {key: 'daily_filing', label: 'Digital filing'},
     {key: 'daily_mobile_apps', label: 'Mobile Applications'},
     {key: 'daily_blockchain', label: 'Blockchain technology'},
-    {key: 'Adaily_internet', label: 'Reliable internet'},
+    {key: 'daily_internet', label: 'Reliable internet'},
     {key: 'daily_smartboards', label: 'Smartboards'},
     {key: 'daily_software', label: 'Software and web applications'},
     {key: 'daily_automated_equipment', label: 'Automated equipment'},
